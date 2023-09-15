@@ -1,21 +1,21 @@
-import Slider from 'react-slick';
+import Slider from "react-slick";
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 //  pass details
 const Card = ({ details }) => {
   return (
-    <div className="mx-[17px]">
+    <div className="mr-[17px]">
       <div
         className="w-[370px] h-[240px] rounded-[8px] flex justify-end flex-col"
         style={{
-          backgroundImage: 'url(images/adobe-firefly-card.jpg)', // image is applied as bg
+          backgroundImage: "url(images/adobe-firefly-card.jpg)", // image is applied as bg
         }}
       >
         <div className="px-[18px] py-[25px] flex flex-col">
           {/* name */}
-          <div className="text-white text-[17px] font-medium">Adobe Fly</div> 
+          <div className="text-white text-[17px] font-medium">Adobe Fly</div>
           {/* description or something idk */}
           <div className="text-white text-[14px] font-normal">
             AI Tool for image Editing

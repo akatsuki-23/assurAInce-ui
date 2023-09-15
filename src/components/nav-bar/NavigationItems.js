@@ -11,7 +11,7 @@ export const navItems = [
     id: "home",
     name: "Dashboard",
     icon: DashboardIcon,
-    path: routesPath.AITOOLS,
+    path: routesPath.HOME,
   },
   {
     id: "employee-details",
@@ -23,7 +23,7 @@ export const navItems = [
     id: "ai-tools",
     name: "AI Tools",
     icon: AiToolsIcon,
-    path: routesPath.AITOOLS,
+    path: routesPath.AI_TOOLS,
   },
   {
     id: "productivity",
