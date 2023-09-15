@@ -10,7 +10,13 @@ const userDetails = atom({
   default: {},
 });
 
+const isExistingLoginAtom = atom({
+  key: 'isFirstLogin',
+  default: false,
+});
+
 export {
   textState,
-  userDetails
+  userDetails,
+  isExistingLoginAtom
 }

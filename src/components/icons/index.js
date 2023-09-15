@@ -14,3 +14,5 @@ export { ReactComponent as ReferIcon } from "../../assets/icons/referIcon.svg";
 export { ReactComponent as SettingsIcon } from "../../assets/icons/settings.svg";
 export { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 export { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
+export { ReactComponent as NotificationIcon } from "../../assets/icons/notification.svg";
+export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plusCircleIcon.svg";
