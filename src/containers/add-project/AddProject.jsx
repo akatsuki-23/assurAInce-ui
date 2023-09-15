@@ -82,7 +82,7 @@ const AddProjectPage = () => {
               Showing data over the last 30 days
             </div>
           </div>
-          <Stepper selectedIndex={selectedIndex} />
+          <Stepper selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/>
         </div>
         {selectedPage}
       </div>
