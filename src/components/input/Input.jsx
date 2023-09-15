@@ -1,11 +1,24 @@
 import { TextField } from '@mui/material';
 
-const Input = ({ value, type, placeholder, onChange }) => {
+const Input = ({
+  value,
+  type,
+  placeholder,
+  onChange,
+  width,
+  height,
+  style = {},
+}) => {
   return (
     <TextField
-      sx={{
-        width: '358px',
-      }}
+      sx={[
+        style,
+        {
+          width: width || '358px',
+          height: height || '',
+          borderColor: '#D0D5DD',
+        },
+      ]}
       variant="outlined"
       placeholder={placeholder}
       value={value}
