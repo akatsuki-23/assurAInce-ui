@@ -7,8 +7,10 @@ import HomePage from '../containers/home/Home';
 import Topbar from '../components/top-bar/Topbar';
 import { isExistingLoginAtom } from '../store/atoms';
 import WelcomePage from '../containers/welcome/Welcome';
+import GiveBack from "../containers/give-back/GiveBack";
 import NavigationBar from '../components/nav-bar/NavigationBar';
 import Notification from '../features/notification/Notification';
+import ProductivityPage from "../containers/productivity/Productivity";
 import EmployeeListPage from "../containers/employee-list-page/EmployeeListPage";
 import ProductivityListPage from '../containers/productivity-list-page/ProductivityListPage';
 
@@ -17,7 +19,7 @@ const PrivateLayout = () => {
   const isExistingLogin = useRecoilValue(isExistingLoginAtom);
 
   useEffect(() => {
-    const isExisting = localStorage.getItem('isExistingLogin') === 'true';
+    const isExisting = localStorage.getItem("isExistingLogin") === "true";
 
     setIsExistingLogin(isExisting);
   }, []);
@@ -33,6 +35,11 @@ const PrivateLayout = () => {
               <Route path={RoutesPath.HOME} element={<HomePage />} />
               <Route path={RoutesPath.EMPLOYEES} element={<EmployeeListPage />} />
               <Route path={RoutesPath.PRODUCTIVITY} element={<ProductivityListPage />} />
+              <Route path={RoutesPath.GIVE_BACK} element={<GiveBack />} />
+              <Route
+                path={RoutesPath.PRODUCTIVITY_DETAIL}
+                element={<ProductivityPage />}
+              />
               <Route
                 path={RoutesPath.ALL}
                 element={<Navigate to={RoutesPath.HOME} replace />}

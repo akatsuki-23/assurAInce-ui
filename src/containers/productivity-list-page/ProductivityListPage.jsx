@@ -46,7 +46,7 @@ const ProductivityListPage = () => {
   };
 
   const handleRowClick = (id) => {
-    navigate(`productivity/${id}`);
+    navigate(`/productivity/${id}`);
   };
 
   const formatTableData = useCallback(() => {

@@ -1,12 +1,14 @@
 const routesPath = {
   ALL: '*',
   DEFAULT: '/',
-  SIGNUP: '/signup',
-  LOGIN: '/login',
   HOME: '/home',
-  EMPLOYEES: '/employee-details',
+  LOGIN: '/login',
+  SIGNUP: '/signup',
   AITOOLS: '/ai-tools',
-  PRODUCTIVITY: '/productivity'
+  GIVE_BACK: '/give-back',
+  PRODUCTIVITY: '/productivity',
+  EMPLOYEES: '/employee-details',
+  PRODUCTIVITY_DETAIL: '/productivity/:id',
 };
 
 export default routesPath;
