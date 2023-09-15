@@ -76,6 +76,7 @@ const donateOptions = [
 const GiveBack = () => {
   const [dialogState, setDialogState] = useState(false);
   const [donateOption, setDonateOption] = useState(1);
+  const [donateAmount, setDonateAmount] = useState(1);
   const setAlerts = useSetRecoilState(alerts);
 
   const hideDialog = () => {
@@ -97,6 +98,11 @@ const GiveBack = () => {
     ]);
     setDialogState(false);
   };
+
+  const donationSelectHanlde = (donation) => {
+    setDonateOption(donation.key)
+    setDonateAmount(donation.amount)
+  }
   
   return (
     <>
@@ -118,7 +124,7 @@ const GiveBack = () => {
                   ? "bg-purple4 text-white shadow-lg "
                   : "bg-gray-200 text-gray-400"
               }`}
-              onClick={() => setDonateOption(item.key)}
+              onClick={() => donationSelectHanlde(item)}
             >
               ${item.amount}
             </div>
@@ -134,7 +140,7 @@ const GiveBack = () => {
             <div className="px-3 font-bold">$</div>
             <input
               type="number"
-              value={20000}
+              onChange={setDonateAmount}
               className={`w-28 h-full border-2 rounded-md px-2 outline-none ${
                 donateOption === 4
                   ? "border-purple5  text-black"
@@ -178,8 +184,8 @@ const GiveBack = () => {
       <div className="w-full h-full">
         <div className="px-[40px] py-[24px]">
           <div className="mb-6">
-            <div className="text-3xl font-bold">Give back </div>
-            <div className="text-gray-500 text-lg">
+            <div className="text-[24px] font-bold">Give back </div>
+            <div className="text-gray-600 text-[16px]">
               give back money to the employees
             </div>
           </div>

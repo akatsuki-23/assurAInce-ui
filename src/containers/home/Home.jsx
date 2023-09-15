@@ -7,9 +7,12 @@ import AiToolUsage from "./screen-components/ai-tool-usage/AiToolUsage";
 import EmployeeList from "./screen-components/employee-list/EmployeeList";
 import { useRecoilState } from "recoil";
 import { userDetails } from "../../store/atoms";
+import routesPath from "../../routes/RoutesPath";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [user] = useRecoilState(userDetails);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-full">
@@ -38,6 +41,7 @@ const HomePage = () => {
                 height: "40px",
                 backgroundColor: "#985EFF",
               }}
+              onClick={() => navigate(routesPath.EMPLOYEES)}
             >
               <PlusCircleIcon />
               <div>Add Employee</div>

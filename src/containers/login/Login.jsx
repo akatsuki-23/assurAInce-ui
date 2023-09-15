@@ -202,6 +202,7 @@ const LoginPage = ({ type }) => {
                 {/* TODO: Password hide text */}
                 <Input
                   value={password}
+                  type='password'
                   onChange={(e) => {
                     setPassword(e?.target?.value);
                   }}

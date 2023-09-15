@@ -2,20 +2,28 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/button/Button';
 import { LogoIcon, PlusCircleIcon } from '../../components/icons';
 import { useRecoilState } from 'recoil';
-import { isExistingLoginAtom } from '../../store/atoms';
+import { isExistingLoginAtom, userDetails } from '../../store/atoms';
+import routesPath from '../../routes/RoutesPath';
 
 const WelcomePage = () => {
   const navigate = useNavigate();
   const [, setIsExistingLogin] = useRecoilState(isExistingLoginAtom);
+  const [user] = useRecoilState(userDetails);
 
-  const onButtonClick = () => {
+
+  const onAddEmployeeClick = () => {
     localStorage.setItem('isExistingLogin', 'true');
 
     setIsExistingLogin(true);
-    // TODO:
-    // navigate('/employees') -> navigate accoridinly
+    navigate(routesPath.EMPLOYEES)
+  }
 
-    navigate('/home');
+  const onAddAiClick = () => {
+    localStorage.setItem('isExistingLogin', 'true');
+
+    setIsExistingLogin(true);
+    navigate(routesPath.AITOOLS)
+
   }
 
   return (
@@ -30,7 +38,7 @@ const WelcomePage = () => {
       <div className="flex flex-col w-full h-full justify-center items-center">
         <img src="images/welcome-img.png" alt="" className="mb-[70px]" />
         <div className="font-semibold text-[24px] leading-[28px] mb-[4px]">
-          Welcome Jestin
+          Welcome {user?.firstName} {user?.lastName}
         </div>
         <div className="text-[16px] text-[#475367] mb-[45px]">
           AI-powered dashboard for streamlined insights and Know Employee
@@ -38,7 +46,7 @@ const WelcomePage = () => {
         </div>
         <div className="flex gap-[14px] items-center justify-center w-full">
           <Button
-            onClick={onButtonClick}
+            onClick={onAddEmployeeClick}
             hoverBgColor="#985EFF"
             style={{
               borderRadius: '6px',
@@ -55,7 +63,7 @@ const WelcomePage = () => {
             </div>
           </Button>
           <Button
-            onClick={onButtonClick}
+            onClick={onAddAiClick}
             hoverBgColor="#0B111C"
             style={{
               borderRadius: '6px',
