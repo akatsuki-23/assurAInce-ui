@@ -4,6 +4,7 @@ import RoutesPath from "./RoutesPath";
 import HomePage from "../containers/home/Home";
 import NavigationBar from "../components/nav-bar/NavigationBar";
 import Notification from "../features/notification/Notification";
+import AiTools from "../containers/ai-tools/AiTools";
 
 const PrivateLayout = () => {
   return (
@@ -13,6 +14,7 @@ const PrivateLayout = () => {
         <div className="w-[calc(100vw-272px)]">
           <Routes>
             <Route path={RoutesPath.HOME} element={<HomePage />} />
+            <Route path={RoutesPath.AI_TOOLS} element={<AiTools />} />
             <Route
               path={RoutesPath.ALL}
               element={<Navigate to={RoutesPath.HOME} replace />}
