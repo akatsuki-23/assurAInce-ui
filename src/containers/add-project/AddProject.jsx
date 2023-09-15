@@ -1,16 +1,21 @@
 import Input from "../../components/input/Input";
+import { useState } from "react";
+import Stepper from "./components/Stepper";
 
 const AddProjectPage = () => {
+  const [selectedIndex, setSelectedIndex] = useState(1);
+
   return (
     <div className="w-full h-full">
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center">
           <div className="flex flex-col">
             <div className="text-[24px] font-semibold">Add Project</div>
             <div className="text-[#667185] text-[14px]">
               Showing data over the last 30 days
             </div>
           </div>
+          <Stepper selectedIndex={selectedIndex} />
         </div>
         <div className="bg-white w-full h-full rounded-[10px] border border-[#E4E7EC]">
           <div className="p-6 text-[18px] font-semibold text-[#101928]">
