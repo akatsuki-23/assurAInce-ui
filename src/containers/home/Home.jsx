@@ -7,8 +7,7 @@ import { SunIcon, ThreeDIcon } from "../../components/icons";
 const HomePage = () => {
   return (
     <div className="w-full h-full">
-      Home
-      <div className="w-[1103px] mx-auto">
+      <div className="mx-auto">
         <div className="flex flex-row   items-stretch m-4">
           <CustomCard
             isUsingAi
