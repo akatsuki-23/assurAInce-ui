@@ -1,3 +1,5 @@
+import Input from "../../components/input/Input";
+
 const AddProjectPage = () => {
   return (
     <div className="w-full h-full">
@@ -11,11 +13,39 @@ const AddProjectPage = () => {
           </div>
         </div>
         <div className="bg-white w-full h-full rounded-[10px] border border-[#E4E7EC]">
-          omega balls nice
+          <div className="p-6 text-[18px] font-semibold text-[#101928]">
+            Project Details
+          </div>
+          <div className="border-t-[1px] border-[#E4E7EC] flex flex-wrap">
+            <div className="p-[45px] flex flex-col gap-1">
+                Project Name
+                <Input value="Cam Scanner"/>
+            </div>
+            <div className="p-[45px] flex flex-col gap-1">
+                Project Name
+                <Input value="Cam Scanner"/>
+            </div>
+            <div className="p-[45px] flex flex-col gap-1">
+                Project Name
+                <Input value="Cam Scanner"/>
+            </div>
+            <div className="p-[45px] flex flex-col gap-1">
+                Project Name
+                <Input value="Cam Scanner"/>
+            </div>
+            <div className="p-[45px] flex flex-col gap-1">
+                Project Name
+                <Input value="Cam Scanner"/>
+            </div>
+            <div className="p-[45px] flex flex-col gap-1">
+                Project Name
+                <Input value="Cam Scanner"/>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
-}
- 
+};
+
 export default AddProjectPage;
