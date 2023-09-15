@@ -1,14 +1,13 @@
-import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import { useRecoilState } from 'recoil';
-import { userDetails } from '../store/atoms';
-import { getUserDetails } from '../services/api';
-import PrivateLayout from './PrivateRoute';
-import PublicLayout from './PublicLayout';
+import { useRecoilState } from "recoil";
+import { userDetails } from "../store/atoms";
+import { getUserDetails } from "../services/api";
+import PrivateLayout from "./PrivateRoute";
+import PublicLayout from "./PublicLayout";
 
 const RouteLayout = () => {
-
   const [user, setUser] = useRecoilState(userDetails);
 
   const fetchUserDetails = async () => {
