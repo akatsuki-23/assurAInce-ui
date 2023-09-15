@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,7 +26,7 @@ ChartJS.register(
 const options = {
   responsive: true,
   maintainAspectRatio: false,
-  tension: 0.4,
+  tension: 0.3,
   plugins: {
     legend: { display: false },
     tooltip: {
@@ -53,12 +52,13 @@ const options = {
             }).format(context.parsed.y);
           }
           return label;
-        }
+        },
       },
     },
   },
   scales: {
     y: {
+      border: { display: false },
       ticks: {
         display: false,
       },
@@ -68,7 +68,8 @@ const options = {
       },
     },
     x: {
-      ticks: { font: { size: 18, weight: "bold" } },
+      border: { display: false },
+      ticks: { font: { size: 18, weight: "bold" }, padding: 0 },
       grid: {
         display: false,
         lineWidth: 0,
@@ -77,20 +78,14 @@ const options = {
   },
 };
 
-const LineChart = ({
-  className,
-  labels,
-  datasets,
-  width = "100%",
-  height = 300,
-}) => {
+const LineChart = ({ className, labels, datasets }) => {
   const data = {
     labels,
     datasets,
   };
 
   return (
-    <div className={className} style={{ width, height }}>
+    <div className={className}>
       <Line data={data} options={options} />
     </div>
   );

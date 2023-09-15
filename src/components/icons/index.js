@@ -15,4 +15,7 @@ export { ReactComponent as SettingsIcon } from "../../assets/icons/settings.svg"
 export { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 export { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
 export { ReactComponent as NotificationIcon } from "../../assets/icons/notification.svg";
-export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plusCircleIcon.svg";
+export { ReactComponent as CalendarIcon } from "../../assets/icons/calendar.svg";
+export { ReactComponent as ChevronRightIcon } from "../../assets/icons/chevron-right.svg";
+export { ReactComponent as UsersIcon } from "../../assets/icons/users.svg";
+export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plus-circle.svg";

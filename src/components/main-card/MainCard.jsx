@@ -1,4 +1,3 @@
-import React from "react";
 
 const MainCard = ({ className, children }) => {
   return (
