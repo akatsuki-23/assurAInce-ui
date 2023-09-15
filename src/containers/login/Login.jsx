@@ -102,7 +102,7 @@ const LoginPage = ({ type }) => {
 
         <div className="flex flex-col gap-[32px] justify-between">
           <div className="text-[60px] font-semibold leading-[66px] text-white">
-            Lorem Ipsum is simply dummy text of the printing
+            Innovation for enhanced productivity
           </div>
           <div className="text-[18px] text-[#E4DBDB] opacity-[0.7]">
             Our comprehensive design system offers you an unparalleled range of
@@ -202,6 +202,7 @@ const LoginPage = ({ type }) => {
                 {/* TODO: Password hide text */}
                 <Input
                   value={password}
+                  type='password'
                   onChange={(e) => {
                     setPassword(e?.target?.value);
                   }}

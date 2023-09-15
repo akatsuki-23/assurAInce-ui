@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRightIcon } from "../../../../components/icons";
 import { getEmployee } from "../../api";
+import routesPath from "../../../../routes/RoutesPath";
 
 const  EmployeeList = () => {
   const [employeeList, setEmployeeList] = useState([]);
@@ -22,7 +23,7 @@ const  EmployeeList = () => {
   };
 
   const handleSeeAll = () => {
-    navigate("employee-details");
+    navigate(routesPath.EMPLOYEES);
   };
 
   const handleEmployee = (id) => {
@@ -37,10 +38,10 @@ const  EmployeeList = () => {
             New Employees added
           </div>
           <div
-            className="text-[#985EFF] text-sm font-semibold flex flex-row items-center cursor-pointer"
+            className="text-[#985EFF] text-sm font-semibold flex flex-row space-x-1 items-center cursor-pointer"
             onClick={handleSeeAll}
           >
-            See all Employees
+            <div>See all Employees</div>
             <ChevronRightIcon fill="#985EFF" className="w-5 h-5" />
           </div>
         </div>
@@ -49,7 +50,7 @@ const  EmployeeList = () => {
         {employeeList?.slice(0,8).map((employee) => (
           <div
             key={employee?.id}
-            className="flex flex-col items-center justify-center text-center"
+            className="flex flex-col items-center justify-center text-center cursor-pointer"
             onClick={()=>handleEmployee(employee.id)}
           >
             <div className="w-12 h-12 rounded-full bg-[#F2E7FE] flex items-center justify-center text-[#344054] text-xl font-bold mb-[8px]" >
