@@ -1,4 +1,6 @@
 import Button from "../../components/button/Button";
+import EmployeeCarousel from "../../components/carousel/EmployeeCarousel";
+import UsedToolsCarousel from "../../components/carousel/UsedToolsCarousel";
 
 const ProductivityPage = () => {
   return (
@@ -102,9 +104,29 @@ const ProductivityPage = () => {
               </div>
             </div>
 
-            <div>Employees carousel</div>
+            <div className="py-5 pt-[35px] pb-[45px] 2xl:px-20 xl:px-8 px-4">
+              <div className="flex flex-col mb-[36px]">
+                <div className="text-[#101928] font-medium text-[16px]">
+                  Employees
+                </div>
+                <div className="text-[#475367] font-normal text-[14px]">
+                Currently Working employees details
+                </div>
+              </div>
+              <EmployeeCarousel />
+            </div>
 
-            <div>AI tools carousel</div>
+            <div className="py-5 pb-[45px] 2xl:px-20 xl:px-8 px-4 border-t border-t-[#E4E7EC]">
+              <div className="flex flex-col mb-[36px]">
+                <div className="text-[#101928] font-medium text-[16px]">
+                  AI Tools Used
+                </div>
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Current Project AI Tools
+                </div>
+              </div>
+              <UsedToolsCarousel />
+            </div>
           </div>
         </div>
       </div>
