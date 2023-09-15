@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/button/Button";
 import { DonateIcon } from "../../components/icons";
 import MainCard from "../../components/main-card/MainCard";

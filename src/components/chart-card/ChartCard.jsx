@@ -89,11 +89,11 @@ const ChartCard = ({className}) => {
         <div className="ml-auto flex items-center space-x-6">
           <div className="flex items-center space-x-2 font-bold text-gray-500">
             <div className="rounded-full w-3 h-3 bg-blue"></div>
-            <div>AI</div>
+            <div>Employee</div>
           </div>
           <div className="flex items-center space-x-2 font-bold text-gray-500">
             <div className="rounded-full w-3 h-3 bg-purple5"></div>
-            <div>Employee</div>
+            <div>AI</div>
           </div>
         </div>
       </MainCardHeader>
