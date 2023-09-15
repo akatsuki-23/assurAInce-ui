@@ -26,3 +26,4 @@ export { ReactComponent as DonateIcon } from "../../assets/icons/donate.svg";
 export { ReactComponent as EyeSlashIcon } from "../../assets/icons/eye_slash.svg";
 export { ReactComponent as AdobeFireFlyIcon } from "../../assets/icons/adobeFireFly.svg";
 export { ReactComponent as SuccessIcon } from "../../assets/icons/successTick.svg";
+export { ReactComponent as RoundPlusIcon } from "../../assets/icons/rounded-plus.svg";
