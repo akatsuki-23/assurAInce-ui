@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import LineChart from "../charts/LineChart";
 import { chartData } from "../charts/funcs";
 import MainCard from "../main-card/MainCard";
