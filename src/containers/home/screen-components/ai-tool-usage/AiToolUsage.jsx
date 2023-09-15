@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "../../../../components/icons";
 import MainCard from "../../../../components/main-card/MainCard";
 import MainCardHeader from "../../../../components/main-card/MainCardHeader";
 
@@ -11,8 +12,9 @@ const AiToolUsage = ({ className }) => {
   return (
     <MainCard className={className}>
       <MainCardHeader title="AI Tool Usage">
-        <div className="ml-auto">
-          Last 7 days
+        <div className="ml-auto flex items-center space-x-2">
+          <div>Last 7 days</div>
+          <ChevronDownIcon />
         </div>
       </MainCardHeader>
       <div className="p-6">
@@ -24,7 +26,7 @@ const AiToolUsage = ({ className }) => {
             </div>
             <div className="h-2 rounded-full bg-gray-200 mt-2">
               <div
-                className="bg-blue h-full rounded-full duration-500"
+                className="bg-purple5 h-full rounded-full duration-500"
                 style={{ width: `${item.percentage}%` }}
               ></div>
             </div>

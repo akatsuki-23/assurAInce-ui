@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ChevronRightIcon } from "../../../../components/icons";
 import { getEmployee } from "../../api";
 
-const EmployeeList = () => {
+const  EmployeeList = () => {
   const [employeeList, setEmployeeList] = useState([]);
   const navigate = useNavigate();
 
@@ -45,20 +45,20 @@ const EmployeeList = () => {
           </div>
         </div>
       </div>
-      <div className="py-10 px-[34px] flex flex-row gap-5">
-        {employeeList?.map((employee) => (
+      <div className="py-10 px-[34px] flex flex-row justify-between">
+        {employeeList?.slice(0,8).map((employee) => (
           <div
             key={employee?.id}
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center text-center"
             onClick={()=>handleEmployee(employee.id)}
           >
-            <div className="w-12 h-12 rounded-full bg-[#F2E7FE] flex items-center justify-center text-[#344054] text-xl font-bold">
+            <div className="w-12 h-12 rounded-full bg-[#F2E7FE] flex items-center justify-center text-[#344054] text-xl font-bold mb-[8px]" >
               {getProfilePicture(employee?.firstName, employee?.lastName)}
             </div>
-            <div className="w-[68px] truncate text-xs font-semibold flex justify-center">
+            <div className="w-[72px] truncate text-xs font-semibold">
               {employee?.firstName} {employee?.lastName}
             </div>
-            <div className="w-[75px] truncate text-xs font-normal text-[#98A2B3]">
+            <div className="w-[72px] truncate text-xs font-normal text-[#98A2B3]">
               {employee?.email}
             </div>
           </div>
