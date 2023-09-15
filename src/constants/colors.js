@@ -1,5 +1,6 @@
 const COLORS = {
   WHITE: "#FFFFFF",
+  BLACK: '#000000',
   PURPLE0: "#F2E7FE",
   PURPLE1: "#DBB2FF",
   PURPLE2: "#BB86FC",
@@ -10,6 +11,10 @@ const COLORS = {
   PURPLE7: "#3700B3",
   PURPLE8: "#30009C",
   PURPLE9: "#23036A",
+  GRAY: '#71717A',
+  GRAY2: '#E4E4E7',
+  GRAY4: '#98A2B3' 
+
 };
 
 export default COLORS;
