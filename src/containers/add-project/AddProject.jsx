@@ -2,10 +2,12 @@ import Input from "../../components/input/Input";
 import { useMemo, useState } from "react";
 import Stepper from "./components/Stepper";
 import AddEmployee from "./components/AddEmployee";
+import Button from "../../components/button/Button";
+import { RoundPlusIcon } from "../../components/icons";
 import AddTools from "./components/AddTools";
 
 const AddProjectPage = () => {
-  const [selectedIndex, setSelectedIndex] = useState(2);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const selectedPage = useMemo(() => {
     switch (selectedIndex) {
@@ -16,48 +18,49 @@ const AddProjectPage = () => {
               <div className="p-6 text-[18px] font-semibold text-[#101928]">
                 Project Details
               </div>
-              <div className="border-t-[1px] border-[#E4E7EC] flex flex-wrap">
-                <div className="p-[45px] flex flex-col gap-4">
-                  Project Name
-                  <Input value="Cam Scanner" width="500px" />
-                </div>
-                <div className="p-[45px] flex flex-col gap-4">
-                  Catogory
-                  <Input value="Cam Scanner" width="500px" />
-                </div>
-                <div className="pb-[45px] px-[45px] flex flex-col gap-4">
-                  Start Date
-                  <Input value="Cam Scanner" width="500px" />
-                </div>
-                <div className="pb-[45px] px-[45px] flex flex-col gap-4">
-                  Estimated end
-                  <Input
-                    value="Cam Scanner"
-                    width="500px"
-                    style={{
-                      outline: "none",
-                      borderRadius: "10px",
-                      backgroundColor: 'black'
-                    }}
-                  />
-                </div>
-                <div className="pb-[45px] px-[45px] flex flex-col gap-4">
-                  Description
-                  <textarea
-                    style={{
-                      display: "flex",
-                      padding: "14px",
-                      border: `1px solid #E4E7EC`,
-                      borderRadius: "10px",
-                      width: "900px",
-                      resize: "none",
-                      color: "black",
-                      fontWeight: 400,
-                      fontSize: "14px",
-                      outline: "none",
-                      height: "100px",
-                    }}
-                  />
+              <div className="flex flex-col">
+                <div className="border-t-[1px] border-[#E4E7EC] flex flex-wrap">
+                  <div className="p-[45px] flex flex-col gap-4">
+                    Project Name
+                    <Input value="Cam Scanner" width="500px" />
+                  </div>
+                  <div className="p-[45px] flex flex-col gap-4">
+                    Catogory
+                    <Input value="Cam Scanner" width="500px" />
+                  </div>
+                  <div className="pb-[45px] px-[45px] flex flex-col gap-4">
+                    Start Date
+                    <Input value="Cam Scanner" width="500px" />
+                  </div>
+                  <div className="pb-[45px] px-[45px] flex flex-col gap-4">
+                    Estimated end
+                    <Input
+                      value="Cam Scanner"
+                      width="500px"
+                      style={{
+                        outline: "none",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  </div>
+                  <div className="pb-[45px] px-[45px] flex flex-col gap-4">
+                    Description
+                    <textarea
+                      style={{
+                        display: "flex",
+                        padding: "14px",
+                        border: `1px solid #E4E7EC`,
+                        borderRadius: "10px",
+                        width: "900px",
+                        resize: "none",
+                        color: "black",
+                        fontWeight: 400,
+                        fontSize: "14px",
+                        outline: "none",
+                        height: "100px",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -80,9 +83,43 @@ const AddProjectPage = () => {
               Showing data over the last 30 days
             </div>
           </div>
-          <Stepper selectedIndex={selectedIndex} />
+          <Stepper selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/>
         </div>
         {selectedPage}
+      </div>
+      <div className="flex flex-row gap-3 pl-[50px] pb-[50px] pt-[30px]">
+        <Button
+          hoverBgColor="#FFFFFF"
+          style={{
+            borderRadius: "6px",
+            height: "36px",
+            backgroundColor: "#FFFFFF",
+            color: "#000000",
+            boxShadow: "none",
+            border: 1,
+            borderColor: "#D0D5DD",
+          }}
+          onClick={() => {}}
+        >
+          {selectedIndex === 0 ? "Cancel" : "Back"}
+        </Button>
+        <Button
+          hoverBgColor="#985EFF"
+          style={{
+            borderRadius: "6px",
+            boxShadow: "none",
+            height: "36px",
+            backgroundColor: "#985EFF",
+            padding: "8px 12px",
+            display: "flex",
+            flexDirection: "row",
+            gap: "4px",
+          }}
+          onClick={() => {}}
+        >
+          <RoundPlusIcon />
+          Next
+        </Button>
       </div>
     </div>
   );

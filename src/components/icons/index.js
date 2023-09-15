@@ -25,3 +25,4 @@ export { ReactComponent as ThreeDots } from "../../assets/icons/threeDots.svg";
 export { ReactComponent as DonateIcon } from "../../assets/icons/donate.svg";
 export { ReactComponent as AdobeFireFlyIcon } from "../../assets/icons/adobeFireFly.svg";
 export { ReactComponent as SuccessIcon } from "../../assets/icons/successTick.svg";
+export { ReactComponent as RoundPlusIcon } from "../../assets/icons/rounded-plus.svg";

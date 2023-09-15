@@ -1,4 +1,4 @@
-const Stepper = ({ selectedIndex = 0 }) => {
+const Stepper = ({ selectedIndex = 0, setSelectedIndex }) => {
   const STEPS = ['Details', 'Add Employee', 'AI Tools'];
 
   return (
@@ -9,8 +9,9 @@ const Stepper = ({ selectedIndex = 0 }) => {
           return (
             <>
               <div
+                onClick={()=>setSelectedIndex(index)}
                 key={item}
-                className={`font-medium text-[15px] border border-[#985EFF] flex items-center justify-center w-[24px] h-[24px] rounded-[4px] ${
+                className={`cursor-pointer font-medium text-[15px] border border-[#985EFF] flex items-center justify-center w-[24px] h-[24px] rounded-[4px] ${
                   isSelected
                     ? 'bg-[#985EFF] text-white'
                     : 'bg-none text-[#985EFF] opacity-[0.5]'
