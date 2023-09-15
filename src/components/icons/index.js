@@ -20,4 +20,6 @@ export { ReactComponent as ChevronRightIcon } from "../../assets/icons/chevron-r
 export { ReactComponent as ChevronDownIcon } from "../../assets/icons/cheveron-down.svg";
 export { ReactComponent as UsersIcon } from "../../assets/icons/users.svg";
 export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plus-circle.svg";
+export { ReactComponent as FilterIcon } from "../../assets/icons/filterIcon.svg"
+export { ReactComponent as ThreeDots } from "../../assets/icons/threeDots.svg";
 export { ReactComponent as DonateIcon } from "../../assets/icons/donate.svg";

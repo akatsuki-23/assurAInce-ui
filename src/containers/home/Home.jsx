@@ -10,6 +10,7 @@ import { userDetails } from "../../store/atoms";
 
 const HomePage = () => {
   const [user] = useRecoilState(userDetails);
+
   return (
     <div className="w-full h-full">
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
