@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isExistingLoginAtom } from "../store/atoms";
 import ProductivityPage from "../containers/productivity/Productivity";
+import GiveBack from "../containers/give-back/GiveBack";
 
 const PrivateLayout = () => {
   const [, setIsExistingLogin] = useRecoilState(isExistingLoginAtom);
@@ -30,6 +31,7 @@ const PrivateLayout = () => {
           <div className="w-[calc(100vw-272px)]">
             <Routes>
               <Route path={RoutesPath.HOME} element={<HomePage />} />
+              <Route path={RoutesPath.GIVE_BACK} element={<GiveBack />} />
               <Route
                 path={RoutesPath.PRODUCTIVITY}
                 element={<ProductivityPage />}

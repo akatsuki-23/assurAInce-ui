@@ -3,8 +3,8 @@ import Button from "../../components/button/Button";
 const ProductivityPage = () => {
   return (
     <div className="flex flex-col px-14 py-[22px]">
-      <div className="text-2xl font-semibold">Productivity</div>
-      <div className="text-[#667185] text-sm mt-1">
+      <div className="text-4xl font-semibold">Productivity</div>
+      <div className="text-[#667185] text-lg mt-1">
         Showing data over the last 30 days
       </div>
       <div className="bg-white w-full rounded-[10px] border-[1px] border-[#E4E7EC] shadow-lg my-[30px] overflow-hidden">

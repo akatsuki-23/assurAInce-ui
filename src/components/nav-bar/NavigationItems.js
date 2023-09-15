@@ -35,5 +35,6 @@ export const navItems = [
     name: "Productivity",
     icon: ReferIcon,
     path: "/productivity",
-  }
+  },
+  { id: "give-back", name: "Give back", icon: ReferIcon, path: "/give-back" },
 ];
