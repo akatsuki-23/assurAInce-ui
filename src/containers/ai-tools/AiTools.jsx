@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CustomButton from "../../components/custom-button/CustomButton";
 import { Card } from "@mui/material";
 import { getAiTools } from "../ai-tools/api";
+import AiToolsCarousel from "../../components/carousel/AiToolsCarousel";
 
 const aiToolJsonData = [
   {
@@ -53,8 +54,9 @@ const AiTools = () => {
       <div className="mx-auto">
         <div>AI Tools</div>
         <div>Showing data over the last 30 days</div>
-        <div className="flex flex-row items-stretch m-4">
-          Add Image + Div Carousel
+        <div>
+          {/* pass data here */}
+          <AiToolsCarousel data={{}} />
         </div>
       </div>
       <div className="mx-auto">
