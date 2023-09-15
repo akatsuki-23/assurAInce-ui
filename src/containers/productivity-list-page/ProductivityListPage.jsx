@@ -81,7 +81,7 @@ const ProductivityListPage = () => {
             <p className="ml-2">Fitler</p>
           </div>
         </div>
-        <div className="whitespace-nowrap p-2 border border-gray-300 rounded-lg bg-purple3 text-white">
+        <div className="whitespace-nowrap p-2 border border-gray-300 rounded-lg bg-purple3 text-white cursor-pointer" onClick={()=>{navigate('/add-project')}}>
           Add Project
         </div>
       </div>
