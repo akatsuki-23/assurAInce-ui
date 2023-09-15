@@ -11,6 +11,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { isExistingLoginAtom } from "../store/atoms";
 import ProductivityPage from "../containers/productivity/Productivity";
 import GiveBack from "../containers/give-back/GiveBack";
+import AiTools from "../containers/ai-tools/AiTools";
 
 const PrivateLayout = () => {
   const [, setIsExistingLogin] = useRecoilState(isExistingLoginAtom);
@@ -32,6 +33,7 @@ const PrivateLayout = () => {
             <Routes>
               <Route path={RoutesPath.HOME} element={<HomePage />} />
               <Route path={RoutesPath.GIVE_BACK} element={<GiveBack />} />
+              <Route path={RoutesPath.AI_TOOLS} element={<AiTools />} />
               <Route
                 path={RoutesPath.PRODUCTIVITY}
                 element={<ProductivityPage />}

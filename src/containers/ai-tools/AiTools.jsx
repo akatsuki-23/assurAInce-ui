@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CustomButton from "../../components/custom-button/CustomButton";
 import { Card } from "@mui/material";
+import { getAiTools } from "../ai-tools/api";
 
 const aiToolJsonData = [
   {
@@ -30,15 +31,22 @@ const aiToolJsonData = [
 ];
 
 const AiTools = () => {
-  const [selectedDomainFilter, setSelectedDomainFilter] = useState("");
-  const distinctStdNames = [
-    ...new Set(aiToolJsonData.map((tool) => tool.domain)),
-  ];
-  console.log(selectedDomainFilter);
+  const [selectedDomainFilter, setSelectedDomainFilter] = useState("ALL");
+  const [toolList, setToolList] = useState([]);
 
-  //   useEffect(() => {
-  //     console.log(selectedAiTool);
-  //   }, [selectedAiTool]);
+  useEffect(() => {
+    (async () => {
+      const resp = await getAiTools();
+      console.log(resp);
+      if (resp) {
+        setToolList(resp?.data);
+      }
+    })();
+  }, []);
+
+  const distinctDomainNames = [...new Set(toolList.map((tool) => tool.domain))];
+  console.log("selectedDomainFilter: ", selectedDomainFilter);
+  console.log("toolList: ", toolList);
 
   return (
     <div className="w-full h-full">
@@ -52,7 +60,7 @@ const AiTools = () => {
       <div className="mx-auto">
         <div>Top AI Tools</div>
         <div id="filter-label-container" className="mb-6 mt-3">
-          {distinctStdNames.map((tool, index) => (
+          {distinctDomainNames.map((tool, index) => (
             <CustomButton
               key={index}
               variant="outlined"
