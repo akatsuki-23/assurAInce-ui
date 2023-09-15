@@ -19,3 +19,4 @@ export { ReactComponent as CalendarIcon } from "../../assets/icons/calendar.svg"
 export { ReactComponent as ChevronRightIcon } from "../../assets/icons/chevron-right.svg";
 export { ReactComponent as UsersIcon } from "../../assets/icons/users.svg";
 export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plus-circle.svg";
+export { ReactComponent as DonateIcon } from "../../assets/icons/donate.svg";
