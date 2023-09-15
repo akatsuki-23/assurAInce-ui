@@ -29,7 +29,7 @@ const NavigationBar = () => {
       } bg-[#101928] py-6 flex-col justify-between`}
     >
       <div
-        className="absolute right-[-8px] top-12 rounded-full w-[18px] h-[18px] bg-white flex items-center justify-center border-gray-300 border cursor-pointer hover:bg-slate-200"
+        className="absolute right-[-8px] top-20 rounded-full w-[18px] h-[18px] bg-white flex items-center justify-center border-gray-300 border cursor-pointer hover:bg-slate-200"
         onClick={handleMenuClick}
       >
         <ArrowIcon
