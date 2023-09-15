@@ -7,16 +7,19 @@ import AiToolUsage from "./screen-components/ai-tool-usage/AiToolUsage";
 import EmployeeList from "./screen-components/employee-list/EmployeeList";
 import { useRecoilState } from "recoil";
 import { userDetails } from "../../store/atoms";
+import routesPath from "../../routes/RoutesPath";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [user] = useRecoilState(userDetails);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-full">
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
         <div className="flex justify-between items-center ">
           <div>
-            <div className="text-[24px] font-bold">Welcome {user.firstName} {user.lastName}</div>
+            <div className="text-[24px] font-bold">Welcome {user?.firstName} {user?.lastName}</div>
             <div className="text-gray-600 text-[16px]">
               AI-powered dashboard for streamlined insights and Know Employee
               Performance
@@ -36,6 +39,7 @@ const HomePage = () => {
                 height: "40px",
                 backgroundColor: "#985EFF",
               }}
+              onClick={() => navigate(routesPath.EMPLOYEES)}
             >
               <PlusCircleIcon />
               <div>Add Employee</div>

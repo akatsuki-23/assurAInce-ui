@@ -7,31 +7,32 @@ import {
 } from "../../../../components/icons";
 import MainCard from "../../../../components/main-card/MainCard";
 import MainCardHeader from "../../../../components/main-card/MainCardHeader";
+import routesPath from "../../../../routes/RoutesPath";
 
 const data = [
   {
     title: "Add New Project",
     desc: "Match AI tools and employees.",
     icon: CalendarIcon,
-    path: "/test",
+    path: routesPath.PRODUCTIVITY,
   },
   {
     title: "Add More Employees",
     desc: "List out employees Details",
     icon: UsersIcon,
-    path: "/test",
+    path: routesPath.EMPLOYEES,
   },
   {
     title: "Give Back",
     desc: "Find closest hospitals",
     icon: DonateIcon,
-    path: "/give-back",
+    path: routesPath.GIVE_BACK,
   },
   {
     title: "Onboard AI",
     desc: "Share invite and Earn $500 ",
     icon: () => <div className="font-medium">AI</div>,
-    path: "",
+    path: routesPath.AITOOLS,
   },
 ];
 
