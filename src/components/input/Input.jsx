@@ -17,6 +17,8 @@ const Input = ({
           width: width || '358px',
           height: height || '',
           borderColor: '#D0D5DD',
+          focus: 'none',
+          outline: 'none'
         },
       ]}
       variant="outlined"

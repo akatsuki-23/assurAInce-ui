@@ -35,17 +35,18 @@ const CustomTextArea = ({ value, onChange, onClear }) => {
     <CustomTextAreaContainer>
       <CustomTextAreaStyled
         minRows={3}
+        minCol
         value={value}
         onChange={onChange}
         placeholder="Enter text..."
       />
-      <ClearButton
+      {/* <ClearButton
         onClick={handleClearClick}
         color="secondary"
         aria-label="Clear Text"
       >
         <ClearIcon />
-      </ClearButton>
+      </ClearButton> */}
     </CustomTextAreaContainer>
   );
 };
