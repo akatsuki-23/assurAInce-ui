@@ -11,24 +11,24 @@ const CustomCard = ({
   return (
     <div className="w-full">
       <Card
-        sx={{ height: 109, borderRadius: 1 }}
+        sx={{ height: 109, borderRadius: '12px' }}
         variant="outlined"
       >
         <div className="flex items-center p-4">
           <div className="mr-14">
-            <div className="text-[#475367] text-sm font-normal leading-5 break-words mb-2">
+            <div className="text-[#475367] text-sm font-normal leading-5 break-words mb-[8px]">
               {title}
             </div>
-            <div className="text-[#344054] font-semibold text-xl leading-6">
+            <div className="text-[#344054] font-semibold text-xl leading-6 mb-[8px]">
               {metric}
             </div>
             <div className="flex mr-6 ">
-              <span className="flex text-[#036B26] bg-[#E7F6EC] px-1 text-xs rounded-full">
+              <span className="flex flex-nowrap text-[#036B26] bg-[#E7F6EC] px-1.5 text-xs rounded-full">
                 <ChartIcon className="my-auto mr-1" />
                 {percentage}%
               </span>
               {isUsingAi && (
-                <div className="text-[#04802E] text-xs ml-[6px]">Using AI</div>
+                <div className="text-[#04802E] text-xs ml-[6px] font-medium">Using AI</div>
               )}
             </div>
           </div>
