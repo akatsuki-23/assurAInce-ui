@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import {
-  CalendarIcon,
   ChevronRightIcon,
   UsersIcon,
 } from "../../../../components/icons";
