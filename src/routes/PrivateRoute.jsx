@@ -13,6 +13,7 @@ import Notification from '../features/notification/Notification';
 import ProductivityPage from "../containers/productivity/Productivity";
 import EmployeeListPage from "../containers/employee-list-page/EmployeeListPage";
 import ProductivityListPage from '../containers/productivity-list-page/ProductivityListPage';
+import AddProjectPage from '../containers/add-project/AddProject';
 
 const PrivateLayout = () => {
   const [, setIsExistingLogin] = useRecoilState(isExistingLoginAtom);
@@ -34,6 +35,7 @@ const PrivateLayout = () => {
             <Routes>
               <Route path={RoutesPath.HOME} element={<HomePage />} />
               <Route path={RoutesPath.EMPLOYEES} element={<EmployeeListPage />} />
+              <Route path={RoutesPath.ADD_PROJECT} element={<AddProjectPage />} />
               <Route path={RoutesPath.PRODUCTIVITY} element={<ProductivityListPage />} />
               <Route path={RoutesPath.GIVE_BACK} element={<GiveBack />} />
               <Route
