@@ -5,17 +5,21 @@ import QuickActions from "./screen-components/quick-actions/QuickActions";
 import Button from "../../components/button/Button";
 import AiToolUsage from "./screen-components/ai-tool-usage/AiToolUsage";
 import EmployeeList from "./screen-components/employee-list/EmployeeList";
+import { useRecoilState } from "recoil";
+import { userDetails } from "../../store/atoms";
 
 const HomePage = () => {
-  const fullName = "Sahal Mohamed";
+  const [user] = useRecoilState(userDetails);
 
   return (
     <div className="w-full h-full">
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
         <div className="flex justify-between items-center ">
           <div>
-            <div className="text-3xl font-bold">Welcome {fullName}</div>
-            <div className="text-gray-500 text-lg">
+            <div className="text-[24px] font-bold">
+              Welcome {user.firstName} {user.lastName}
+            </div>
+            <div className="text-gray-600 text-[16px]">
               AI-powered dashboard for streamlined insights and Know Employee
               Performance
             </div>
@@ -75,7 +79,7 @@ const HomePage = () => {
           </div>
           <div className="w-1/3 space-y-6">
             <QuickActions />
-            <AiToolUsage/>
+            <AiToolUsage />
           </div>
         </div>
       </div>

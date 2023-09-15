@@ -1,14 +1,14 @@
 const routesPath = {
-  ALL: '*',
-  DEFAULT: '/',
-  HOME: '/home',
-  LOGIN: '/login',
-  SIGNUP: '/signup',
-  AITOOLS: '/ai-tools',
-  GIVE_BACK: '/give-back',
-  PRODUCTIVITY: '/productivity',
-  EMPLOYEES: '/employee-details',
-  PRODUCTIVITY_DETAIL: '/productivity/:id',
+  ALL: "*",
+  DEFAULT: "/",
+  HOME: "/home",
+  LOGIN: "/login",
+  SIGNUP: "/signup",
+  AI_TOOLS: "/ai-tools",
+  GIVE_BACK: "/give-back",
+  PRODUCTIVITY: "/productivity",
+  EMPLOYEES: "/employee-details",
+  PRODUCTIVITY_DETAIL: "/productivity/:id",
   ADD_PROJECT: '/add-project'
 };
 

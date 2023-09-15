@@ -1,73 +1,100 @@
-import { useState } from "react";
-import CustomButton from "../../components/custom-button/CustomButton";
-import AiToolCarousel from "../../components/carousel/EmployeeCarousel";
-
-const aiToolJsonData = [
-  {
-    id: 1,
-    name: "Adobe firefly",
-    domain: "design",
-    imageUrl: "",
-  },
-  {
-    id: 2,
-    name: "Code jet",
-    domain: "design",
-    imageUrl: "",
-  },
-  {
-    id: 3,
-    name: "Vs Code",
-    domain: "development",
-    imageUrl: "",
-  },
-  {
-    id: 4,
-    name: "Notion",
-    domain: "content writing",
-    imageUrl: "",
-  },
-];
+import { useEffect, useState } from "react";
+import { getAiTools } from "../ai-tools/api";
+import AiToolsCarousel from "../../components/carousel/AiToolsCarousel";
+import ToolItem from "./ToolItem";
+import Button from "../../components/button/Button";
 
 const AiTools = () => {
-  const [selectedDomainFilter, setSelectedDomainFilter] = useState("");
-  const distinctStdNames = [
-    ...new Set(aiToolJsonData.map((tool) => tool.domain)),
-  ];
-  console.log(selectedDomainFilter);
+  const [selectedDomainFilter, setSelectedDomainFilter] = useState(
+    "Autonomous Vehicles"
+  );
+  const [toolList, setToolList] = useState([]);
+  const [filteredToolList, setFilteredToolList] = useState([]);
 
+  useEffect(() => {
+    (async () => {
+      const resp = await getAiTools();
+
+      if (resp) {
+        const modifiedResponseList = resp?.data.filter((item) =>
+          item.id <= 15 && item.domain.length <= 20 ? item.domain : ""
+        );
+        setToolList(modifiedResponseList);
+      }
+    })();
+  }, []);
+
+  const distinctDomainNames = [...new Set(toolList.map((tool) => tool.domain))];
+
+  useEffect(() => {
+    setSelectedDomainFilter(
+      [...new Set(toolList.map((tool) => tool.domain))][0]
+    );
+  }, [toolList]);
+
+  useEffect(() => {
+    const tempList = toolList.filter(
+      (tool) => selectedDomainFilter === tool.domain
+    );
+    setFilteredToolList(tempList);
+  }, [selectedDomainFilter, toolList]);
 
   return (
-    <div className="w-full h-full">
-      <div className="mx-auto">
-        <div>AI Tools</div>
-        <div>Showing data over the last 30 days</div>
-        <div className="flex flex-row items-stretch m-4">
-          <AiToolCarousel />
+    <div className="flex flex-col px-14 py-[22px]">
+      <div className="mb-8">
+        <div className="text-4xl font-semibold">AI Tools</div>
+        <div className="text-[#667185] text-lg mt-1">
+          Showing data over the last 30 days
+        </div>
+        <div className="py-[24px] flex flex-col space-y-6">
+          <AiToolsCarousel data={{}} />
         </div>
       </div>
-      <div className="mx-auto">
-        <div>Top AI Tools</div>
-        <div id="filter-label-container" className="mb-6 mt-3">
-          {distinctStdNames.map((tool, index) => (
-            <CustomButton
-              key={index}
-              variant="outlined"
-              onClick={() => setSelectedDomainFilter(tool)}
-            >
-              {tool}
-            </CustomButton>
-          ))}
+      <div>
+        <div className="text-base font-medium break-words">My AI Tools</div>
+        <div id="filter-label-container" className="mb-6 mt-3 flex flex-row">
+          {distinctDomainNames.map(
+            (domainName, index) =>
+              domainName !== null && (
+                <Button
+                  key={index}
+                  bgColor={
+                    domainName === selectedDomainFilter ? "#F4E7FF" : "#F0F2F5"
+                  }
+                  style={{
+                    borderRadius: "10px",
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "8px",
+                    fontSize: "13px",
+                    fontWeight: 500,
+                    height: "40px",
+                    marginRight: "12px",
+                    borderColor:
+                      domainName === selectedDomainFilter
+                        ? "#C483FF"
+                        : "#D0D5DD",
+                    color: "#101928",
+                  }}
+                  variant="outlined"
+                  onClick={() => {
+                    setSelectedDomainFilter(domainName);
+                  }}
+                >
+                  {domainName}
+                </Button>
+              )
+          )}
         </div>
-        <div>
-          {aiToolJsonData.map((tool, index) => (
-            <CustomButton
-              key={index}
-              variant="outlined"
-              onClick={() => setSelectedDomainFilter(tool.name)}
-            >
-              {tool.name}
-            </CustomButton>
+        <div className="flex w-full flex-wrap">
+          {filteredToolList.map((tool, index) => (
+            <div key={tool.id} className="mr-6">
+              <ToolItem
+                item={tool}
+                rank={index}
+                onClick={() => setSelectedDomainFilter(tool.name)}
+              />
+            </div>
           ))}
         </div>
       </div>

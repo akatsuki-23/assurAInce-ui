@@ -17,8 +17,11 @@ export { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
 export { ReactComponent as NotificationIcon } from "../../assets/icons/notification.svg";
 export { ReactComponent as CalendarIcon } from "../../assets/icons/calendar.svg";
 export { ReactComponent as ChevronRightIcon } from "../../assets/icons/chevron-right.svg";
+export { ReactComponent as ChevronDownIcon } from "../../assets/icons/cheveron-down.svg";
 export { ReactComponent as UsersIcon } from "../../assets/icons/users.svg";
 export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plus-circle.svg";
-export { ReactComponent as FilterIcon } from "../../assets/icons/filterIcon.svg"
+export { ReactComponent as FilterIcon } from "../../assets/icons/filterIcon.svg";
 export { ReactComponent as ThreeDots } from "../../assets/icons/threeDots.svg";
 export { ReactComponent as DonateIcon } from "../../assets/icons/donate.svg";
+export { ReactComponent as AdobeFireFlyIcon } from "../../assets/icons/adobeFireFly.svg";
+export { ReactComponent as SuccessIcon } from "../../assets/icons/successTick.svg";

@@ -5,6 +5,7 @@ const Button = ({
   variant = "contained",
   className = "",
   bgColor = "",
+  borderColor = "",
   hoverBgColor = "",
   onClick,
   style = {},
@@ -18,6 +19,7 @@ const Button = ({
         {
           textTransform: "none",
           backgroundColor: bgColor,
+          borderColor: borderColor,
           "&:hover": {
             backgroundColor: hoverBgColor || bgColor,
           },

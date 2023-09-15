@@ -34,19 +34,27 @@ const durationToLabelsMap = {
 const getData = (key) => {
   return [
     {
-      [MONTHS_12_KEY]: [10, 20, 15, 25, 10, 15, 25, 30, 15, 20, 15, 25],
-      [MONTHS_6_KEY]: [25, 30, 5, 20, 15, 25],
-      [DAYS_7_KEY]: [25, 10, 15, 25, 30, 15, 20],
+      [MONTHS_12_KEY]: [
+        25425, 35545, 30532, 49098, 45872, 49000, 45084, 59087, 84439, 80944,
+        80887, 129384,
+      ],
+      [MONTHS_6_KEY]: [45084, 59087, 84439, 80944,
+        80887, 129384,],
+      [DAYS_7_KEY]: [117384, 120384, 121384, 120423, 127384, 127384, 129384],
     }[key],
     {
-      [MONTHS_12_KEY]: [20, 30, 10, 15, 30, 20, 35, 10, 5, 10, 25, 15],
-      [MONTHS_6_KEY]: [20, 30, 10, 15, 30, 20],
-      [DAYS_7_KEY]: [35, 10, 5, 10, 25, 15, 10],
+      [MONTHS_12_KEY]: [
+        12425, 12545, 10532, 39098, 23872, 39000, 29084, 39087, 54439, 60944,
+        60887, 79384,
+      ],
+      [MONTHS_6_KEY]: [29084, 39087, 54439, 60944,
+        60887, 79384,],
+      [DAYS_7_KEY]: [73384,76384,74423,75384,79384,75384,79384,],
     }[key],
   ];
 };
 
-const ChartCard = ({className}) => {
+const ChartCard = ({ className }) => {
   const [selectedDuration, setSelectedDuration] = useState();
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
@@ -89,11 +97,11 @@ const ChartCard = ({className}) => {
         <div className="ml-auto flex items-center space-x-6">
           <div className="flex items-center space-x-2 font-bold text-gray-500">
             <div className="rounded-full w-3 h-3 bg-blue"></div>
-            <div>AI</div>
+            <div>Employee</div>
           </div>
           <div className="flex items-center space-x-2 font-bold text-gray-500">
             <div className="rounded-full w-3 h-3 bg-purple5"></div>
-            <div>Employee</div>
+            <div>AI</div>
           </div>
         </div>
       </MainCardHeader>

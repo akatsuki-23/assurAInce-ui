@@ -30,6 +30,7 @@ const options = {
   plugins: {
     legend: { display: false },
     tooltip: {
+      intersect: false,
       displayColors: false,
       padding: 15,
       backgroundColor: COLORS.WHITE,
