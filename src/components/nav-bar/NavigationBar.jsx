@@ -1,13 +1,7 @@
-import {
-  ArrowIcon,
-  LogoIcon,
-  PlusIcon,
-  SettingsIcon,
-} from "../icons";
+import { ArrowIcon, LogoIcon, PlusIcon, SettingsIcon } from "../icons";
 import Button from "../button/Button";
 import { navItems } from "./NavigationItems";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { navigation } from "../../store/navigation";
 
@@ -17,10 +11,6 @@ const NavigationBar = () => {
 
   const open = useRecoilValue(navigation);
   const setOpen = useSetRecoilState(navigation);
-
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
 
   const handleNavBarItemClick = (path) => {
     navigate(path);
@@ -45,9 +35,7 @@ const NavigationBar = () => {
         <ArrowIcon
           fill="#808080"
           stroke="#000000"
-          className={` w-3 h-3 ${
-            open ? "rotate-180" : ""
-          } `}
+          className={` w-3 h-3 ${open ? "rotate-180" : ""} `}
           onClick={handleMenuClick}
         />
       </div>
@@ -110,7 +98,11 @@ const NavigationBar = () => {
                   }`}
                 />
                 {open && (
-                  <div className={`overflow-hidden ${open ? "w-full" : "w-0"} truncate text-clip`}>
+                  <div
+                    className={`overflow-hidden ${open ? "w-full" : "w-0"} ${
+                      isActive(item.path) ? "text-white" : ""
+                    } truncate text-clip`}
+                  >
                     {item.name}
                   </div>
                 )}

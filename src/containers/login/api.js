@@ -14,6 +14,6 @@ export const login = async (email, password) => {
 
     return resp;
   } catch (e) {
-    console.log(e);
+    console.log(e); 
   }
 };
