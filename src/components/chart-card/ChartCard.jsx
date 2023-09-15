@@ -46,7 +46,7 @@ const getData = (key) => {
   ];
 };
 
-const ChartCard = () => {
+const ChartCard = ({className}) => {
   const [selectedDuration, setSelectedDuration] = useState();
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
@@ -69,7 +69,7 @@ const ChartCard = () => {
   }, []);
 
   return (
-    <MainCard className="m-5">
+    <MainCard className={className}>
       <MainCardHeader title="Performance">
         <div className="flex items-center space-x-2">
           {durations.map((duration) => (
@@ -98,7 +98,7 @@ const ChartCard = () => {
         </div>
       </MainCardHeader>
       <LineChart
-        className="p-5"
+        className="p-5 h-[250px]"
         datasets={chartData("AI", data1, "Normal", data2)}
         labels={durationToLabelsMap[selectedDuration]}
       />

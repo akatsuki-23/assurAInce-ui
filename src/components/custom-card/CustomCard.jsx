@@ -9,9 +9,9 @@ const CustomCard = ({
   icon,
 }) => {
   return (
-    <div className="mr-4">
+    <div className="w-full">
       <Card
-        sx={{ width: 263.75, height: 109, borderRadius: 1 }}
+        sx={{ height: 109, borderRadius: 1 }}
         variant="outlined"
       >
         <div className="flex p-4">

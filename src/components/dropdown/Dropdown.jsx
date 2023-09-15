@@ -17,6 +17,7 @@ function DropdownSelect({ options, value = '', onChange, width, label }) {
         sx={{
           width: width || 200,
           textAlign: 'left',
+          border: 0
         }}
       >
         {options.map((option) => (

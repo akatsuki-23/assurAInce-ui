@@ -1,14 +1,44 @@
 import ChartCard from "../../components/chart-card/ChartCard";
-import MainCard from "../../components/main-card/MainCard";
-import MainCardHeader from "../../components/main-card/MainCardHeader";
 import CustomCard from "../../components/custom-card/CustomCard";
-import { SunIcon, ThreeDIcon } from "../../components/icons";
+import { PlusCircleIcon, SunIcon, ThreeDIcon } from "../../components/icons";
+import QuickActions from "./screen-components/quick-actions/QuickActions";
+import Button from "../../components/button/Button";
+import AiToolUsage from "./screen-components/ai-tool-usage/AiToolUsage";
 
 const HomePage = () => {
+  const fullName = "Sahal Mohamed";
   return (
     <div className="w-full h-full">
-      <div className="mx-auto">
-        <div className="flex flex-row   items-stretch m-4">
+      <div className="px-[40px] py-[24px] flex flex-col space-y-6">
+        <div className="flex justify-between items-center ">
+          <div>
+            <div className="text-2xl font-bold">Welcome {fullName}</div>
+            <div className="text-gray-500">
+              AI-powered dashboard for streamlined insights and Know Employee
+              Performance
+            </div>
+          </div>
+          <div className="ml-auto">
+            <Button
+              hoverBgColor="#985EFF"
+              style={{
+                borderRadius: "10px",
+                display: "flex",
+                flexDirection: "row",
+                gap: "8px",
+                fontSize: "13px",
+                fontWeight: 500,
+                width: "100%",
+                height: "40px",
+                backgroundColor: "#985EFF",
+              }}
+            >
+              <PlusCircleIcon />
+              <div>Add Employee</div>
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-row items-stretch space-x-4">
           <CustomCard
             isUsingAi
             title="No of Employees"
@@ -36,11 +66,15 @@ const HomePage = () => {
             icon={<SunIcon />}
           />
         </div>
-        <ChartCard />
-        <MainCard>
-          <MainCardHeader title="fsadf"></MainCardHeader>
-          <div className="p-5">fasdfsad</div>
-        </MainCard>
+        <div className="flex space-x-6">
+          <div className="w-2/3">
+            <ChartCard />
+          </div>
+          <div className="w-1/3 space-y-6">
+            <QuickActions />
+            <AiToolUsage/>
+          </div>
+        </div>
       </div>
     </div>
   );
