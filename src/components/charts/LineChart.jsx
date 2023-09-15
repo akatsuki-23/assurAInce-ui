@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,7 +26,7 @@ ChartJS.register(
 const options = {
   responsive: true,
   maintainAspectRatio: false,
-  tension: 0.4,
+  tension: 0.3,
   plugins: {
     legend: { display: false },
     tooltip: {
