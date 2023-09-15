@@ -46,7 +46,7 @@ const NavigationBar = () => {
           fill="#808080"
           stroke="#000000"
           className={` w-3 h-3 ${
-            open ? "" : "rotate-180"
+            open ? "rotate-180" : ""
           } `}
           onClick={handleMenuClick}
         />
