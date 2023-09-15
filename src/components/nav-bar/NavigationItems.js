@@ -30,4 +30,10 @@ export const navItems = [
     icon: ReferIcon,
     path: "/refer-and-earn",
   },
+  {
+    id: "productivity",
+    name: "Productivity",
+    icon: ReferIcon,
+    path: "/productivity",
+  }
 ];
