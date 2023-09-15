@@ -4,6 +4,7 @@ import { PlusCircleIcon, SunIcon, ThreeDIcon } from "../../components/icons";
 import QuickActions from "./screen-components/quick-actions/QuickActions";
 import Button from "../../components/button/Button";
 import AiToolUsage from "./screen-components/ai-tool-usage/AiToolUsage";
+import EmployeeList from "./screen-components/employee-list/EmployeeList";
 
 const HomePage = () => {
   const fullName = "Sahal Mohamed";
@@ -69,6 +70,7 @@ const HomePage = () => {
         <div className="flex space-x-6">
           <div className="w-2/3">
             <ChartCard />
+            <EmployeeList />
           </div>
           <div className="w-1/3 space-y-6">
             <QuickActions />
