@@ -1,8 +1,9 @@
+import routesPath from "../../routes/RoutesPath";
 import {
+  ReferIcon,
   AiToolsIcon,
   DashboardIcon,
   EmployeeDetailsIcon,
-  ReferIcon,
 } from "../icons";
 
 export const navItems = [
@@ -10,24 +11,24 @@ export const navItems = [
     id: "home",
     name: "Dashboard",
     icon: DashboardIcon,
-    path: "/home",
+    path: routesPath.AITOOLS,
   },
   {
     id: "employee-details",
     name: "Employee Details",
     icon: EmployeeDetailsIcon,
-    path: "/employee-details",
+    path: routesPath.EMPLOYEES,
   },
   {
     id: "ai-tools",
     name: "AI Tools",
     icon: AiToolsIcon,
-    path: "/ai-tools",
+    path: routesPath.AITOOLS,
   },
   {
-    id: "refer-and-earn",
-    name: "Refer & earn",
+    id: "productivity",
+    name: "Productivity",
     icon: ReferIcon,
-    path: "/refer-and-earn",
+    path: routesPath.PRODUCTIVITY,
   },
 ];
