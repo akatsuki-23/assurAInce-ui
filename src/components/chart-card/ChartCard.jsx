@@ -4,6 +4,10 @@ import { chartData } from "../charts/funcs";
 import MainCard from "../main-card/MainCard";
 import MainCardHeader from "../main-card/MainCardHeader";
 
+const MONTHS_12_KEY = 1;
+const MONTHS_6_KEY = 2;
+const DAYS_7_KEY = 3;
+
 const MONTHS = [
   "Feb",
   "Mar",
@@ -30,20 +34,22 @@ const DAYS = [
 ];
 
 const durationToLabelsMap = {
-  1: MONTHS,
-  2: MONTHS.slice(6),
-  4: DAYS,
+  [MONTHS_12_KEY]: MONTHS,
+  [MONTHS_6_KEY]: MONTHS.slice(6),
+  [DAYS_7_KEY]: DAYS,
 };
 
 const getData = (key) => {
   return [
     {
-      1: [10, 20, 15, 25, 10, 15, 25, 30, 15, 20, 15, 25],
-      2: [25, 30, 5, 20, 15, 25],
+      [MONTHS_12_KEY]: [10, 20, 15, 25, 10, 15, 25, 30, 15, 20, 15, 25],
+      [MONTHS_6_KEY]: [25, 30, 5, 20, 15, 25],
+      [DAYS_7_KEY]: [25, 10, 15, 25, 30, 15, 20],
     }[key],
     {
-      1: [20, 30, 10, 15, 30, 20, 35, 10, 5, 10, 25, 15],
-      2: [20, 30, 10, 15, 30, 20],
+      [MONTHS_12_KEY]: [20, 30, 10, 15, 30, 20, 35, 10, 5, 10, 25, 15],
+      [MONTHS_6_KEY]: [20, 30, 10, 15, 30, 20],
+      [DAYS_7_KEY]: [35, 10, 5, 10, 25, 15, 10],
     }[key],
   ];
 };
@@ -56,8 +62,7 @@ const ChartCard = () => {
   const durations = [
     { label: "12 Months", key: 1 },
     { label: "6 Months", key: 2 },
-    { label: "30 Days", key: 3 },
-    { label: "7 Days", key: 4 },
+    { label: "7 Days", key: 3 },
   ];
 
   const handleChange = (durationKey) => {
