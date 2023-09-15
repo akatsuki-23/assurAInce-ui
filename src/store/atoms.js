@@ -5,6 +5,12 @@ const textState = atom({
   default: '',
 });
 
+const userDetails = atom({
+  key: 'user',
+  default: {},
+});
+
 export {
-  textState
+  textState,
+  userDetails
 }
