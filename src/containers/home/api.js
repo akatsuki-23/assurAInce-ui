@@ -15,5 +15,20 @@ export const getEmployee = async () => {
   }
 };
 
+export const getProjects = async () => {
+  try {
+
+    const resp =  await apiCall({
+      method: 'GET',
+      url: `/projects`,
+      data: {}
+    })
+
+    return resp;
+  } catch (e) {
+    console.log(e)
+  }
+};
+
 
 

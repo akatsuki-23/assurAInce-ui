@@ -1,16 +1,18 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import RoutesPath from "./RoutesPath";
-import HomePage from "../containers/home/Home";
-import NavigationBar from "../components/nav-bar/NavigationBar";
-import Notification from "../features/notification/Notification";
-import Topbar from "../components/top-bar/Topbar";
-import WelcomePage from "../containers/welcome/Welcome";
-import { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { isExistingLoginAtom } from "../store/atoms";
-import ProductivityPage from "../containers/productivity/Productivity";
+import RoutesPath from './RoutesPath';
+import HomePage from '../containers/home/Home';
+import Topbar from '../components/top-bar/Topbar';
+import { isExistingLoginAtom } from '../store/atoms';
+import WelcomePage from '../containers/welcome/Welcome';
 import GiveBack from "../containers/give-back/GiveBack";
+import NavigationBar from '../components/nav-bar/NavigationBar';
+import Notification from '../features/notification/Notification';
+import ProductivityPage from "../containers/productivity/Productivity";
+import EmployeeListPage from "../containers/employee-list-page/EmployeeListPage";
+import ProductivityListPage from '../containers/productivity-list-page/ProductivityListPage';
 
 const PrivateLayout = () => {
   const [, setIsExistingLogin] = useRecoilState(isExistingLoginAtom);
@@ -31,9 +33,11 @@ const PrivateLayout = () => {
           <div className="w-[calc(100vw-272px)]">
             <Routes>
               <Route path={RoutesPath.HOME} element={<HomePage />} />
+              <Route path={RoutesPath.EMPLOYEES} element={<EmployeeListPage />} />
+              <Route path={RoutesPath.PRODUCTIVITY} element={<ProductivityListPage />} />
               <Route path={RoutesPath.GIVE_BACK} element={<GiveBack />} />
               <Route
-                path={RoutesPath.PRODUCTIVITY}
+                path={RoutesPath.PRODUCTIVITY_DETAIL}
                 element={<ProductivityPage />}
               />
               <Route

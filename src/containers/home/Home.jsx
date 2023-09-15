@@ -8,6 +8,7 @@ import EmployeeList from "./screen-components/employee-list/EmployeeList";
 
 const HomePage = () => {
   const fullName = "Sahal Mohamed";
+
   return (
     <div className="w-full h-full">
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
