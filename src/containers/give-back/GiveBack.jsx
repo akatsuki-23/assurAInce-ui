@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/button/Button";
 import { DonateIcon } from "../../components/icons";
 import MainCard from "../../components/main-card/MainCard";
 import CustomModal from "../../components/modal/Modal";
 import GiveBackItem from "./GiveBackItem";
-import Input from "../../components/input/Input";
+import { useSetRecoilState } from "recoil";
+import { alerts } from "../../store/notification";
 
 const topProgramsData = [
   {
@@ -70,15 +71,12 @@ const donateOptions = [
     key: 3,
     amount: 10000,
   },
-  {
-    key: 4,
-    amount: 20000,
-  },
 ];
 
 const GiveBack = () => {
   const [dialogState, setDialogState] = useState(false);
   const [donateOption, setDonateOption] = useState(1);
+  const setAlerts = useSetRecoilState(alerts);
 
   const hideDialog = () => {
     setDialogState(false);
@@ -87,10 +85,23 @@ const GiveBack = () => {
   const showDialog = (item) => {
     setDialogState(true);
   };
+
+  const donationHandle = () => {
+    setAlerts((alerts) => [
+      ...alerts,
+      {
+        type: "success",
+        message: "Donated successfully",
+        description: "You have donated $2000.",
+      },
+    ]);
+    setDialogState(false);
+  };
+  
   return (
     <>
       <CustomModal
-        className="w-96 text-center"
+        className="text-center w-fit"
         open={dialogState}
         onClose={hideDialog}
       >
@@ -102,16 +113,36 @@ const GiveBack = () => {
           {donateOptions.map((item) => (
             <div
               key={item.key}
-              className={`w-20 p-3 rounded-lg font-bold cursor-pointer ${
+              className={`w-20 p-3 rounded-md font-bold cursor-pointer ${
                 donateOption === item.key
-                  ? "bg-purple4 text-white shadow-lg shadow-purple9/40"
-                  : "bg-purple0 text-purple2"
+                  ? "bg-purple4 text-white shadow-lg "
+                  : "bg-gray-200 text-gray-400"
               }`}
               onClick={() => setDonateOption(item.key)}
             >
               ${item.amount}
             </div>
           ))}
+          <div
+            className={`rounded-md cursor-pointer flex items-center ${
+              donateOption === 4
+                ? "bg-purple4 text-white shadow-lg "
+                : "bg-gray-200 text-gray-400"
+            }`}
+            onClick={() => setDonateOption(4)}
+          >
+            <div className="px-3 font-bold">$</div>
+            <input
+              type="number"
+              value={20000}
+              className={`w-28 h-full border-2 rounded-md px-2 outline-none ${
+                donateOption === 4
+                  ? "border-purple5  text-black"
+                  : "border-gray-200 text-gray-400"
+              }`}
+              onFocus={() => setDonateOption(4)}
+            />
+          </div>
         </div>
         <div className="flex space-x-5 justify-center mt-10">
           <Button
@@ -138,6 +169,7 @@ const GiveBack = () => {
               backgroundColor: "#985EFF",
               padding: "8px 12px",
             }}
+            onClick={donationHandle}
           >
             Donate
           </Button>
