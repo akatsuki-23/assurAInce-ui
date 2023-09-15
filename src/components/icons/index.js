@@ -22,3 +22,4 @@ export { ReactComponent as PlusCircleIcon } from "../../assets/icons/plus-circle
 export { ReactComponent as FilterIcon } from "../../assets/icons/filterIcon.svg"
 export { ReactComponent as ThreeDots } from "../../assets/icons/threeDots.svg";
 export { ReactComponent as DonateIcon } from "../../assets/icons/donate.svg";
+export { ReactComponent as RoundPlusIcon } from "../../assets/icons/rounded-plus.svg";
