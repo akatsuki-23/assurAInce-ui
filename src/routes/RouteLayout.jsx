@@ -29,7 +29,13 @@ const RouteLayout = () => {
       <Routes>
         <Route
           path="*"
-          element={!user?.firstName ? <PrivateLayout /> : <PublicLayout />}
+          element={
+            localStorage.getItem("token") || user?.firstName ? (
+              <PrivateLayout />
+            ) : (
+              <PublicLayout />
+            )
+          }
         />
       </Routes>
     </>
