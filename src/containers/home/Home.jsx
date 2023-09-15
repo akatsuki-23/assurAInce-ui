@@ -13,8 +13,8 @@ const HomePage = () => {
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
         <div className="flex justify-between items-center ">
           <div>
-            <div className="text-2xl font-bold">Welcome {fullName}</div>
-            <div className="text-gray-500">
+            <div className="text-3xl font-bold">Welcome {fullName}</div>
+            <div className="text-gray-500 text-lg">
               AI-powered dashboard for streamlined insights and Know Employee
               Performance
             </div>
