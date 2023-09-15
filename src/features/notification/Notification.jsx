@@ -29,13 +29,13 @@ const Notification = () => {
 
       setTimeout(() => {
         hideToast();
-      }, 2000);
+      }, 4000);
     }
-  }, [notifications]);
+  }, [notifications]); 
 
   return show ? (
-    <div className="absolute bottom-6 right-6 z-30 flex justify-center">
-      <Toast type={alert.type} title={alert.message} description={alert.description}/>
+    <div className="absolute top-6 ml-[136px]  left-1/2 -translate-x-1/2 z-30 flex justify-center">
+      <Toast type={alert.type} title={alert.message}/>
     </div>
   ) : null;
 };
