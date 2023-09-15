@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LineChart from "../charts/LineChart";
 import { chartData } from "../charts/funcs";
 import MainCard from "../main-card/MainCard";
@@ -23,15 +23,7 @@ const MONTHS = [
   "Jan",
 ];
 
-const DAYS = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat',
-];
+const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const durationToLabelsMap = {
   [MONTHS_12_KEY]: MONTHS,
@@ -83,7 +75,7 @@ const ChartCard = () => {
           {durations.map((duration) => (
             <div
               key={duration.key}
-              className={`text-sm px-3 py-2 cursor-pointer border-2 border-gray-300/0 text-gray-500 ${
+              className={`font-bold px-3 py-2 cursor-pointer border-2 border-gray-300/0 text-gray-500 ${
                 selectedDuration === duration.key
                   ? "rounded-lg !border-gray-300 text-black"
                   : ""
@@ -93,6 +85,16 @@ const ChartCard = () => {
               {duration.label}
             </div>
           ))}
+        </div>
+        <div className="ml-auto flex items-center space-x-6">
+          <div className="flex items-center space-x-2 font-bold text-gray-500">
+            <div className="rounded-full w-3 h-3 bg-blue"></div>
+            <div>AI</div>
+          </div>
+          <div className="flex items-center space-x-2 font-bold text-gray-500">
+            <div className="rounded-full w-3 h-3 bg-purple5"></div>
+            <div>Employee</div>
+          </div>
         </div>
       </MainCardHeader>
       <LineChart

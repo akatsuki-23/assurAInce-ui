@@ -12,7 +12,7 @@ export const chartData = (label1, data1, label2, data2) => [
     fill: true,
     label: label2,
     data: data2,
-    borderColor: "#5EBBFF",
+    borderColor: COLORS.BLUE,
     backgroundColor: "rgb(92 187 255 / 10%)",
   },
 ];

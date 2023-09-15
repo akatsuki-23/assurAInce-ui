@@ -11,6 +11,7 @@ const COLORS = {
   PURPLE7: "#3700B3",
   PURPLE8: "#30009C",
   PURPLE9: "#23036A",
+  BLUE: '#5EBBFF',
   GRAY: '#71717A',
   GRAY2: '#E4E4E7',
   GRAY4: '#98A2B3',
