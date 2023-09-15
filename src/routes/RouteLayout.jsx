@@ -22,8 +22,6 @@ const RouteLayout = () => {
     (async () => await fetchUserDetails())();
   }, []);
 
-  console.log(user);
-
   return (
     <>
       <Routes>
