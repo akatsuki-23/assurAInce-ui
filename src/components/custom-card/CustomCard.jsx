@@ -14,7 +14,7 @@ const CustomCard = ({
         sx={{ height: 109, borderRadius: 1 }}
         variant="outlined"
       >
-        <div className="flex p-4">
+        <div className="flex items-center p-4">
           <div className="mr-14">
             <div className="text-[#475367] text-sm font-normal leading-5 break-words mb-2">
               {title}
@@ -32,7 +32,7 @@ const CustomCard = ({
               )}
             </div>
           </div>
-          <div className="flex items-center justify-center w-10 h-10 m-auto p-1 rounded-full border border-[#E4E7EC]">
+          <div className="flex items-center justify-center w-10 h-10 ml-auto p-1 rounded-full border border-[#E4E7EC]">
             {icon}
           </div>
         </div>
