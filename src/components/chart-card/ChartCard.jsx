@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import CustomCard from "../custom-card/CustomCard";
-import CustomCardHeader from "../custom-card/CustomCardHeader";
 import LineChart from "../charts/LineChart";
 import { chartData } from "../charts/funcs";
+import MainCard from "../main-card/MainCard";
+import MainCardHeader from "../main-card/MainCardHeader";
 
 const MONTHS = [
   "Feb",
@@ -20,23 +20,38 @@ const MONTHS = [
 ];
 
 const DAYS = [
-
-]
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat',
+];
 
 const durationToLabelsMap = {
   1: MONTHS,
   2: MONTHS.slice(6),
-  3: DAYS,
+  4: DAYS,
 };
 
 const getData = (key) => {
-    return {1: [10, 20, 15, 25, 10, 15, 25, 30, 15, 20, 15, 25], 2: [25, 30, 5, 20, 15, 25]}[key]
-}
+  return [
+    {
+      1: [10, 20, 15, 25, 10, 15, 25, 30, 15, 20, 15, 25],
+      2: [25, 30, 5, 20, 15, 25],
+    }[key],
+    {
+      1: [20, 30, 10, 15, 30, 20, 35, 10, 5, 10, 25, 15],
+      2: [20, 30, 10, 15, 30, 20],
+    }[key],
+  ];
+};
 
 const ChartCard = () => {
   const [selectedDuration, setSelectedDuration] = useState();
-  const [data1, setData1] = useState([])
-  const [data2, setData2] = useState([])
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
 
   const durations = [
     { label: "12 Months", key: 1 },
@@ -46,17 +61,19 @@ const ChartCard = () => {
   ];
 
   const handleChange = (durationKey) => {
-    setData1(getData(durationKey));
+    const datasets = getData(durationKey);
+    setData1(datasets[0]);
+    setData2(datasets[1]);
     setSelectedDuration(durationKey);
-  } 
+  };
 
   useEffect(() => {
     handleChange(1);
-  }, [])
+  }, []);
 
   return (
-    <CustomCard className="m-5">
-      <CustomCardHeader title="Performance">
+    <MainCard className="m-5">
+      <MainCardHeader title="Performance">
         <div className="flex items-center space-x-2">
           {durations.map((duration) => (
             <div
@@ -72,13 +89,13 @@ const ChartCard = () => {
             </div>
           ))}
         </div>
-      </CustomCardHeader>
+      </MainCardHeader>
       <LineChart
         className="p-5"
         datasets={chartData("AI", data1, "Normal", data2)}
         labels={durationToLabelsMap[selectedDuration]}
       />
-    </CustomCard>
+    </MainCard>
   );
 };
 

@@ -1,18 +1,16 @@
-import { useState } from "react";
-import LineChart from "../../components/charts/LineChart";
-import { chartData } from "../../components/charts/funcs";
-import CustomButton from "../../components/custom-button/CustomButton";
-import CustomCard from "../../components/custom-card/CustomCard";
-import CustomCardHeader from "../../components/custom-card/CustomCardHeader";
 import ChartCard from "../../components/chart-card/ChartCard";
+import MainCard from "../../components/main-card/MainCard";
+import MainCardHeader from "../../components/main-card/MainCardHeader";
 
 const HomePage = () => {
-
-
   return (
     <div className="w-full h-full">
       Home
       <ChartCard />
+      <MainCard>
+        <MainCardHeader title="fsadf"></MainCardHeader>
+        <div className="p-5">fasdfsad</div>
+      </MainCard>
     </div>
   );
 };

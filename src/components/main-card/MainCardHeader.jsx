@@ -1,6 +1,4 @@
-import React from "react";
-
-const CustomCardHeader = ({ title, children }) => {
+const MainCardHeader = ({ title, children }) => {
   return (
     <div className="text-lg font-bold border-b border-gray-300 p-5 flex items-center space-x-5">
       <div>{title}</div>
@@ -9,4 +7,4 @@ const CustomCardHeader = ({ title, children }) => {
   );
 };
 
-export default CustomCardHeader;
+export default MainCardHeader;

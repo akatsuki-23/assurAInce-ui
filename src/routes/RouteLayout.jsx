@@ -30,7 +30,7 @@ const RouteLayout = () => {
       <Routes>
         <Route
           path="*"
-          element={user?.firstName ? <PrivateLayout /> : <PublicLayout />}
+          element={!user?.firstName ? <PrivateLayout /> : <PublicLayout />}
         />
       </Routes>
     </>
