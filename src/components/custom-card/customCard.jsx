@@ -1,7 +1,7 @@
 import Card from "@mui/material/Card";
 import { ChartIcon } from "../icons";
 
-const customCard = ({
+const CustomCard = ({
   isUsingAi = false,
   title = "Random Title",
   metric = "randomValue",
@@ -41,4 +41,4 @@ const customCard = ({
   );
 };
 
-export default customCard;
+export default CustomCard;

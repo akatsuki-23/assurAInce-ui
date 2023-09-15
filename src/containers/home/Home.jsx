@@ -1,7 +1,7 @@
 import ChartCard from "../../components/chart-card/ChartCard";
 import MainCard from "../../components/main-card/MainCard";
 import MainCardHeader from "../../components/main-card/MainCardHeader";
-import CustomCard from "../../components/custom-card/customCard";
+import CustomCard from "../../components/custom-card/CustomCard";
 import { SunIcon, ThreeDIcon } from "../../components/icons";
 
 const HomePage = () => {
