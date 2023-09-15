@@ -4,3 +4,6 @@ export { ReactComponent as RoundedTickIcon } from "../../assets/icons/roundedTic
 export { ReactComponent as RoundedErrorIcon } from "../../assets/icons/roundedError.svg";
 export { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
 export { ReactComponent as PlusIcon } from "../../assets/icons/plusIcon.svg";
+export { ReactComponent as ChartIcon } from "../../assets/icons/chart-up.svg";
+export { ReactComponent as ThreeDIcon } from "../../assets/icons/3d.svg";
+export { ReactComponent as SunIcon } from "../../assets/icons/sun.svg";
