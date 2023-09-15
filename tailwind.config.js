@@ -15,7 +15,8 @@ module.exports = {
         purple6: "#5600E8",
         purple7: "#3700B3",
         purple8: "#30009C",
-        purple9: "#23036A", 
+        purple9: "#23036A",
+        gray1: '#D0D5DD',
       }
     },
   },
