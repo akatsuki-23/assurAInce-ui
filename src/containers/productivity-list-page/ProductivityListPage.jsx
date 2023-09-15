@@ -41,7 +41,7 @@ const ProductivityListPage = () => {
 
   const getChipData = (tag) => {
     if (tag)
-      return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: ${PROJECT_CATEGORY_LIST[tag]?.bgColor}; color: ${PROJECT_CATEGORY_LIST[tag].textColor} ">${PROJECT_CATEGORY_LIST[tag].title}</div>`;
+      return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: ${PROJECT_CATEGORY_LIST[tag]?.bgColor}; color: ${PROJECT_CATEGORY_LIST[tag]?.textColor} ">${PROJECT_CATEGORY_LIST[tag]?.title}</div>`;
     return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: #FFECE5; ">-</div>`;
   };
 
