@@ -1,9 +1,29 @@
-import Input from "../../components/input/Input";
-import { useState } from "react";
-import Stepper from "./components/Stepper";
+import Input from '../../components/input/Input';
+import { useMemo, useState } from 'react';
+import Stepper from './components/Stepper';
+import AddEmployee from './components/AddEmployee';
 
 const AddProjectPage = () => {
   const [selectedIndex, setSelectedIndex] = useState(1);
+
+  const selectedPage = useMemo(() => {
+    switch (selectedIndex) {
+      case 0:
+        return (
+          <div>
+            hi cizil pls return the thing here
+          </div>
+        )
+      case 1:
+        return (
+          <AddEmployee />
+        )
+      case 2:
+        return (
+          <div>ok</div>
+        )
+    }
+  }, [selectedIndex])
 
   return (
     <div className="w-full h-full">
