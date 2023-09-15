@@ -19,7 +19,9 @@ const HomePage = () => {
       <div className="px-[40px] py-[24px] flex flex-col space-y-6">
         <div className="flex justify-between items-center ">
           <div>
-            <div className="text-[24px] font-bold">Welcome {user?.firstName} {user?.lastName}</div>
+            <div className="text-[24px] font-bold">
+              Welcome {user.firstName} {user.lastName}
+            </div>
             <div className="text-gray-600 text-[16px]">
               AI-powered dashboard for streamlined insights and Know Employee
               Performance
@@ -81,7 +83,7 @@ const HomePage = () => {
           </div>
           <div className="w-1/3 space-y-6">
             <QuickActions />
-            <AiToolUsage/>
+            <AiToolUsage />
           </div>
         </div>
       </div>
