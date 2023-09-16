@@ -105,8 +105,7 @@ const LoginPage = ({ type }) => {
             Assuring responsible AI advancement
           </div>
           <div className="text-[18px] text-[#E4DBDB] opacity-[0.7]">
-            Our comprehensive design system offers you an unparalleled range of
-            components, sparking creativity and boosting efficiency.
+            A platform to measure, optimize and give back
           </div>
         </div>
       </div>
