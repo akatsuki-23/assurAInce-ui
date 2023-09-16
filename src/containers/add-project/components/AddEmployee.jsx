@@ -19,8 +19,7 @@ const getChipData = (tag) => {
   return `<div style="padding:2px 12px; border-radius: 20px; background-color: #FFECE5; ">-</div>`;
 };
 
-const AddEmployee = () => {
-  const [selected, setSelected] = useState([]);
+const AddEmployee = ({ selected = [], setSelected }) => {
   const [employeeList, setEmployeeList] = useState([]);
 
   useEffect(() => {
