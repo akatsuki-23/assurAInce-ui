@@ -4,6 +4,7 @@ import { navItems } from "./NavigationItems";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { navigation } from "../../store/navigation";
+import COLORS from "../../constants/colors";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
@@ -29,95 +30,79 @@ const NavigationBar = () => {
       } bg-[#101928] py-6 flex-col justify-between`}
     >
       <div
-        className="absolute right-[-8px] top-20 rounded-full w-[18px] h-[18px] bg-white flex items-center justify-center border-gray-300 border cursor-pointer hover:bg-slate-200"
+        className="absolute right-[-8px] top-[85px] rounded-full w-[24px] h-[24px] bg-purple0 flex items-center justify-center border-purple5 border cursor-pointer hover:bg-slate-200"
         onClick={handleMenuClick}
       >
         <ArrowIcon
-          fill="#808080"
+          fill={COLORS.PURPLE5}
           stroke="#000000"
-          className={` w-3 h-3 ${open ? "rotate-180" : ""} `}
+          className={`duration-500 w-3 h-3 ${open ? "rotate-180" : ""} `}
           onClick={handleMenuClick}
         />
       </div>
       <div className="h-full">
-        <div className="flex flex-row items-center justify-center gap-[6px] py-2 px-4 min-h-[56px]">
-          <LogoIcon className="flex items-center w-8 h-8 " />
-          {open && (
-            <div
-              className={`text-[30px] transition-[width] duration-[500ms] ${
-                open ? "w-full" : "w-0"
-              } font-medium items-center text-white max-h-[40px] overflow-hidden truncate text-clip`}
-            >
-              AssurAInce
+        <div
+          className={`overflow-hidden duration-200 text-[#98A2B3] group w-full py-3 rounded-lg whitespace-nowrap hover:text-white cursor-pointer flex items-center ${
+            open ? "px-4" : "px-7"
+          }`}
+        >
+          <div className="flex items-center w-[200px] min-w-[200px]">
+            <LogoIcon className="flex items-center min-w-[32px] min-h-[32px] " />
+            <img
+              className={` duration-200 ${!open ? "ml-10" : "ml-3"}`}
+              src="/images/logo.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="flex flex-row items-center justify-center gap-[6px] py-2 px-4 min-h-[56px]"></div>
+        <div className="pb-10 px-5">
+          <div className="overflow-hidden w-full bg-[#985EFF] text-white px-5 py-3 rounded-lg whitespace-nowrap flex items-center">
+            <div className="">
+              <PlusIcon fill="#FFFFFF" />
             </div>
-          )}
+            <div className={` duration-200 ${!open ? "ml-10" : "ml-3"}`}>
+              Upload Bulk Data
+            </div>
+          </div>
         </div>
-        <div className="py-10 pl-[18px] pr-[40px]">
-          <Button
-            hoverBgColor="#985EFF"
-            style={{
-              borderRadius: "10px",
-              display: "flex",
-              flexDirection: "row",
-              gap: "8px",
-              fontSize: "13px",
-              fontWeight: 500,
-              width: "100%",
-              height: "40px",
-              backgroundColor: "#985EFF",
-            }}
-          >
-            <PlusIcon fill="#FFFFFF" />
-            {open && (
-              <div
-                className={`${
-                  open ? "" : "w-0"
-                } overflow-hidden truncate text-clip`}
-              >
-                Upload Bulk Data
-              </div>
-            )}
-          </Button>
-        </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1  px-5">
           {navItems.map((item) => {
             const { icon: NavbarIcon } = item;
             return (
               <div
                 key={item.id}
-                className={`mx-2 flex flex-row py-3 px-4 gap-3 rounded-md h-[45px] items-center ${
-                  open ? "" : "justify-center"
-                } text-[#98A2B3] cursor-pointer ${
-                  isActive(item.path) ? "bg-[#1D2739]" : ""
+                className={`overflow-hidden text-[#98A2B3] group w-full px-3 py-3 rounded-lg whitespace-nowrap hover:text-white cursor-pointer flex items-center ${
+                  isActive(item.path) ? "bg-[#1D2739] text-white" : ""
                 }`}
                 onClick={() => handleNavBarItemClick(item.id)}
               >
-                <NavbarIcon
-                  className={`w-6 h-6 ${
-                    isActive(item.path) ? "fill-[#985EFF]" : ""
-                  }`}
-                />
-                {open && (
-                  <div
-                    className={`overflow-hidden ${open ? "w-full" : "w-0"} ${
-                      isActive(item.path) ? "text-white" : ""
-                    } truncate text-clip`}
-                  >
-                    {item.name}
-                  </div>
-                )}
+                <div className="">
+                  <NavbarIcon
+                    className={`w-6 h-6  ${
+                      isActive(item.path)
+                        ? "fill-[#985EFF]"
+                        : " group-hover:!fill-white duration-200 fill-[#98A2B3]"
+                    }`}
+                  />
+                </div>
+                <div className={` duration-200 ${!open ? "ml-10" : "ml-3"}`}>
+                  {item.name}
+                </div>
               </div>
             );
           })}
         </div>
       </div>
-      <div
-        className={`flex items-end py-3 px-4 mx-2 flex-row gap-3 text-[#98A2B3] cursor-pointer ${
-          open ? "" : "justify-center"
-        }`}
-      >
-        <SettingsIcon />
-        {open && <div>Settings</div>}
+      <div className="px-5">
+        <div className="overflow-hidden text-[#98A2B3] group w-full px-3 py-3 rounded-lg whitespace-nowrap hover:text-white cursor-pointer flex items-center">
+          <div className="">
+            <SettingsIcon className="w-6 h-6 group-hover:!fill-white duration-200 fill-[#98A2B3]" />
+          </div>
+          <div className={` duration-200 ${!open ? "ml-10" : "ml-3"}`}>
+            Settings
+          </div>
+        </div>
       </div>
     </div>
   );

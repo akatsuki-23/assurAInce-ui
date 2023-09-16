@@ -16,7 +16,7 @@ const HomePage = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="px-[40px] py-[24px] flex flex-col space-y-6">
+      <div className="px-[40px] py-[22px] flex flex-col space-y-6">
         <div className="flex justify-between items-center ">
           <div>
             <div className="text-[24px] font-bold">

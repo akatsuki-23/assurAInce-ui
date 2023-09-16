@@ -25,8 +25,8 @@ const ProductivityPage = () => {
 
   return (
     <div className="flex flex-col px-14 py-[22px]">
-      <div className="text-4xl font-semibold">Productivity</div>
-      <div className="text-[#667185] text-lg mt-1">
+      <div className="text-[24px] font-bold">Productivity</div>
+      <div className="text-gray-600 text-[16px]">
         Showing data over the last 30 days
       </div>
       <div className="bg-white w-full rounded-[10px] border-[1px] border-[#E4E7EC] my-[30px] overflow-hidden">
