@@ -20,7 +20,7 @@ export const getProjects = async () => {
 
     const resp =  await apiCall({
       method: 'GET',
-      url: `/projects`,
+      url: `/projects?page=1&limit=100`,
       data: {}
     })
 
