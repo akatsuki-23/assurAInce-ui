@@ -86,7 +86,7 @@ const AddTools = ({ selectedList = [], setSelectedList, estimate, selectedGroup,
           <img src={data?.iconUrl} className="w-[48px] h-[408x] rounded-[8px]" />
           <div className="flex flex-col">
             <div className="font-medium text-[14px]">Adobe</div>
-            {/* <div className="font-normal text-[14px] text-[#475367]">Design</div> */}
+            <div className="font-normal text-[14px] text-[#475367]">Design</div>
           </div>
         </div>
       </div>
