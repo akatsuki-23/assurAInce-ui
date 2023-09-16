@@ -6,7 +6,7 @@ import { RoundPlusIcon } from '../../components/icons';
 import AddTools from './components/AddTools';
 import ProjectDetails from './components/ProjectDetails';
 import { useNavigate } from 'react-router-dom';
-import { createProject } from './api';
+import { createProject, estimate, fetchEstimate } from './api';
 
 const AddProjectPage = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -18,6 +18,8 @@ const AddProjectPage = () => {
 
   const [employees, setEmployees] = useState([]);
   const [tools, setTools] = useState([]);
+
+  const [estimate, setEstimate] = useState(null);
   const navigate = useNavigate();
 
   const handleNext = useCallback(async () => {
@@ -28,6 +30,13 @@ const AddProjectPage = () => {
       await createProject(name, toolID, employees, description);
 
       navigate('/productivity');
+    }
+``
+    // TODO optimize
+    if (selectedIndex === 1) {
+      const resp = await fetchEstimate(employees);
+
+      setEstimate(resp?.teamEfficiencies);
     }
   }, [tools, employees, selectedIndex, name, description]);
 
@@ -69,7 +78,7 @@ const AddProjectPage = () => {
           <AddEmployee setSelected={setEmployees} selected={employees} />
         )}
         {selectedIndex === 2 && (
-          <AddTools selectedList={tools} setSelectedList={setTools} />
+          <AddTools selectedList={tools} setSelectedList={setTools} estimate={estimate} />
         )}
       </div>
       <div className="flex flex-row gap-3 pl-[50px] pb-[50px] pt-[30px]">

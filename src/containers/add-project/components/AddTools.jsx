@@ -1,14 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getAiTools } from '../../ai-tools/api';
 import Button from '../../../components/button/Button';
 import ToolItem from '../../ai-tools/ToolItem';
 
-const AddTools = ({ selectedList, setSelectedList = []}) => {
+const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
   const [selectedDomainFilter, setSelectedDomainFilter] = useState(
     'Autonomous Vehicles'
   );
   const [toolList, setToolList] = useState([]);
   const [filteredToolList, setFilteredToolList] = useState([]);
+
+  const { removedList, fullList } = useMemo(() => {
+    if (estimate) {
+      if (estimate?.[0]?.employeeCount < estimate?.[1]?.employeeCount) {
+        return { removedList: estimate[0], fullList: estimate[1] };
+      } else {
+        return { removedList: estimate[1], fullList: estimate[0] };
+      }
+    }
+
+    return { removedList: [], fullList: [] };
+  }, [estimate]);
+
+  const withoutAI = removedList?.employees;
+
+  function hoursToDays(hours) {
+    return (hours / 24).toFixed(1);
+  }
 
   useEffect(() => {
     (async () => {
@@ -38,79 +56,217 @@ const AddTools = ({ selectedList, setSelectedList = []}) => {
     setFilteredToolList(tempList);
   }, [selectedDomainFilter, toolList]);
 
-  useEffect(() => {
-    console.log('balls', selectedList);
-  }, [selectedList]);
+  const EmpCard = ({ isDisabled, data }) => {
+    return (
+      <div
+        className={`px-[24px] py-[16px] w-[203px] h-[72px] bg-white rounded-[3px] ${
+          isDisabled && 'border border-[#D42620]'
+        }`}
+      >
+        <div className="flex gap-[12px]">
+          <img
+            src={data?.profileUrl}
+            className="w-[40px] h-[40px] rounded-full"
+          />
+          <div className="font-medium text-[14px]">{`${data?.firstName} ${data?.lastName}`}</div>
+        </div>
+      </div>
+    );
+  };
+
+  const ToolCard = ({ isDisabled, data }) => {
+    return (
+      <div
+        className={`px-[24px] py-[16px] w-[203px] h-[72px] bg-white rounded-[3px] ${
+          isDisabled && 'border border-[#D42620]'
+        }`}
+      >
+        <div className="flex gap-[12px]">
+          {/* <img src={data?.profileUrl} className="w-[40px] h-[40px] rounded-full" /> */}
+          <div className="w-[48px] h-[48px] rounded-[8px] bg-gray-200"></div>
+          <div className="flex flex-col">
+            <div className="font-medium text-[14px]">Adobe</div>
+            {/* <div className="font-normal text-[14px] text-[#475367]">Design</div> */}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="bg-white w-full h-full rounded-[10px] border border-[#E4E7EC] flex flex-col">
       <div className="p-6 text-[18px] font-semibold text-[#101928]">
         Add Tools
       </div>
-      <div className="border-t-[1px] border-[#E4E7EC] flex flex-wrap py-[22px] px-[35px]">
-        <div className="flex gap-[24px] mb-[30px]">
-          <div className="w-[320px] h-[170px] bg-[#F2E7FE] rounded-[12px]"></div>
-        </div>
-      </div>
-      <div className="px-[35px]">
-        <div className="text-base font-medium break-words">My AI Tools</div>
-        <div id="filter-label-container" className="mb-6 mt-3 flex flex-row">
-          {distinctDomainNames.map(
-            (domainName, index) =>
-              domainName !== null && (
-                <Button
-                  key={index}
-                  bgColor={
-                    domainName === selectedDomainFilter ? '#F4E7FF' : '#F0F2F5'
-                  }
-                  style={{
-                    borderRadius: '10px',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    gap: '8px',
-                    fontSize: '13px',
-                    fontWeight: 500,
-                    height: '40px',
-                    marginRight: '12px',
-                    borderColor:
-                      domainName === selectedDomainFilter
-                        ? '#C483FF'
-                        : '#D0D5DD',
-                    color: '#101928',
-                  }}
-                  variant="outlined"
-                  onClick={() => {
-                    setSelectedDomainFilter(domainName);
-                  }}
-                >
-                  {domainName}
-                </Button>
-              )
-          )}
-        </div>
-        <div className="flex w-full flex-wrap">
-          {filteredToolList.map((tool, index) => {
-            const isSelected = selectedList.find((item) => item.id === tool.id);
-
-            return (
-              <div key={tool.id} className={`mr-6 ${isSelected && ''}`}>
-                <ToolItem
-                  item={tool}
-                  rank={index}
-                  onClick={() => {
-                    if (isSelected) {
-                      setSelectedList(
-                        selectedList.filter((item) => item.id !== tool.id)
-                      );
-                    } else {
-                      setSelectedList([...selectedList, tool]);
-                    }
-                  }}
-                  isSelected={isSelected}
-                />
+      <div className="px-[35px] flex flex-col gap-[26px] pb-[50px]">
+        <div className="bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px]">
+          <div className="flex justify-between w-full items-center mb-[26px]">
+            <div className="flex flex-col">
+              <div className="text-[#101928] font-medium text-[16px]">
+                Suggested Team
               </div>
-            );
-          })}
+              <div className="text-[#475367] font-normal text-[14px]">
+                Match AI tools and employees.
+              </div>
+            </div>
+
+            <div className="flex gap-[24px] items-center">
+              <div className="flex gap-[20px] items-center">
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Estimated Time
+                </div>
+                <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
+                  <div className="text-[#344054] font-semibold text-[14px]">
+                    {`${hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)} days`}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-[20px] items-center">
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Estimated Cost
+                </div>
+                <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
+                  <div className="text-[#344054] font-semibold text-[14px]">
+                    $ 10
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-[26px] flex-nowrap mb-[27px]">
+            {fullList?.employees?.map((item) => {
+              return (
+                <EmpCard
+                  key={item?.id}
+                  data={item}
+                  isDisabled={
+                    !removedList?.employees?.find(
+                      (subItem) => subItem.id === item.id
+                    )
+                  }
+                />
+              );
+            })}
+          </div>
+
+          <div className="flex w-full gap-[26px]">
+            {[1, 1, 1].map((item, index) => {
+              return <ToolCard key={index} />;
+            })}
+          </div>
+        </div>
+
+        <div className="bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px]">
+          <div className="flex justify-between w-full items-center mb-[26px]">
+            <div className="flex flex-col">
+              <div className="text-[#101928] font-medium text-[16px]">
+                With AI
+              </div>
+              <div className="text-[#475367] font-normal text-[14px]">
+                Match AI tools and employees.
+              </div>
+            </div>
+
+            <div className="flex gap-[24px] items-center">
+              <div className="flex gap-[20px] items-center">
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Estimated Time
+                </div>
+                <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
+                  <div className="text-[#344054] font-semibold text-[14px]">
+                    {/* {hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)} */}
+                    25 Days
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-[20px] items-center">
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Estimated Cost
+                </div>
+                <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
+                  <div className="text-[#344054] font-semibold text-[14px]">
+                    $ 10
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-[26px] flex-nowrap mb-[27px]">
+            {fullList?.employees?.map((item) => {
+              return (
+                <EmpCard
+                  key={item?.id}
+                  data={item}
+                  isDisabled={
+                    !removedList?.employees?.find(
+                      (subItem) => subItem.id === item.id
+                    )
+                  }
+                />
+              );
+            })}
+          </div>
+
+          <div className="flex w-full gap-[26px]">
+            {[1, 1, 1].map((item, index) => {
+              return <ToolCard key={index} />;
+            })}
+          </div>
+        </div>
+
+        <div className="bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px]">
+          <div className="flex justify-between w-full items-center mb-[26px]">
+            <div className="flex flex-col">
+              <div className="text-[#101928] font-medium text-[16px]">
+                Without AI
+              </div>
+            </div>
+
+            <div className="flex gap-[24px] items-center">
+              <div className="flex gap-[20px] items-center">
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Estimated Time
+                </div>
+                <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
+                  <div className="text-[#344054] font-semibold text-[14px]">
+                    {/* {hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)} */}
+                    30 days
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-[20px] items-center">
+                <div className="text-[#475367] font-normal text-[14px]">
+                  Estimated Cost
+                </div>
+                <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
+                  <div className="text-[#344054] font-semibold text-[14px]">
+                    $ 1000
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-[26px] flex-nowrap mb-[27px]">
+            {fullList?.employees?.map((item) => {
+              return (
+                <EmpCard
+                  key={item?.id}
+                  data={item}
+                  isDisabled={
+                    !removedList?.employees?.find(
+                      (subItem) => subItem.id === item.id
+                    )
+                  }
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
