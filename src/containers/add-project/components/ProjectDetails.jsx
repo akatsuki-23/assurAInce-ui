@@ -1,12 +1,18 @@
-import { useState } from "react";
 import Input from "../../../components/input/Input";
 
-const ProjectDetails = () => {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
-  const [end, setEnd] = useState("");
-  const [description, setDescription] = useState("");
+const ProjectDetails = ({
+  name,
+  setName,
+  category,
+  setCategory,
+  date,
+  setDate,
+  end,
+  setEnd,
+  description,
+  setDescription
+}) => {
+
   return (
     <div>
       <div className="bg-white w-full h-full rounded-[10px] border border-[#E4E7EC] overflow-hidden">

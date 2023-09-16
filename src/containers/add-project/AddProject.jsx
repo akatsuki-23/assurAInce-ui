@@ -1,35 +1,39 @@
-import { useMemo, useState } from "react";
-import Stepper from "./components/Stepper";
-import AddEmployee from "./components/AddEmployee";
-import Button from "../../components/button/Button";
-import { RoundPlusIcon } from "../../components/icons";
-import AddTools from "./components/AddTools";
-import ProjectDetails from "./components/ProjectDetails";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useState } from 'react';
+import Stepper from './components/Stepper';
+import AddEmployee from './components/AddEmployee';
+import Button from '../../components/button/Button';
+import { RoundPlusIcon } from '../../components/icons';
+import AddTools from './components/AddTools';
+import ProjectDetails from './components/ProjectDetails';
+import { useNavigate } from 'react-router-dom';
+import { createProject } from './api';
 
 const AddProjectPage = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [name, setName] = useState('');
+  const [category, setCategory] = useState('');
+  const [date, setDate] = useState('');
+  const [end, setEnd] = useState('');
+  const [description, setDescription] = useState('');
+
+  const [employees, setEmployees] = useState([]);
+  const [tools, setTools] = useState([]);
   const navigate = useNavigate();
 
-  const selectedPage = useMemo(() => {
-    switch (selectedIndex) {
-      case 0:
-        return <ProjectDetails />;
-      case 1:
-        return <AddEmployee />;
-      case 2:
-        return <AddTools />;
-    }
-  }, [selectedIndex]);
-
-  const handleNext = () => {
+  const handleNext = useCallback(async () => {
     if (selectedIndex < 2) setSelectedIndex(selectedIndex + 1);
-    else navigate("/productivity");
-  };
+    else {
+      const toolID = tools.map((item) => item.id);
+
+      await createProject(name, toolID, employees, description);
+
+      navigate('/productivity');
+    }
+  }, [tools, employees, selectedIndex, name, description]);
 
   const handleBack = () => {
     if (selectedIndex > 0) setSelectedIndex(selectedIndex - 1);
-    else navigate("/productivity");
+    else navigate('/productivity');
   };
 
   return (
@@ -47,40 +51,59 @@ const AddProjectPage = () => {
             setSelectedIndex={setSelectedIndex}
           />
         </div>
-        {selectedPage}
+        {selectedIndex === 0 && (
+          <ProjectDetails
+            name={name}
+            setName={setName}
+            category={category}
+            setCategory={setCategory}
+            date={date}
+            setDate={setDate}
+            end={end}
+            setEnd={setEnd}
+            description={description}
+            setDescription={setDescription}
+          />
+        )}
+        {selectedIndex === 1 && (
+          <AddEmployee setSelected={setEmployees} selected={employees} />
+        )}
+        {selectedIndex === 2 && (
+          <AddTools selectedList={tools} setSelectedList={setTools} />
+        )}
       </div>
       <div className="flex flex-row gap-3 pl-[50px] pb-[50px] pt-[30px]">
         <Button
           hoverBgColor="#FFFFFF"
           style={{
-            borderRadius: "6px",
-            height: "36px",
-            backgroundColor: "#FFFFFF",
-            color: "#000000",
-            boxShadow: "none",
+            borderRadius: '6px',
+            height: '36px',
+            backgroundColor: '#FFFFFF',
+            color: '#000000',
+            boxShadow: 'none',
             border: 1,
-            borderColor: "#D0D5DD",
+            borderColor: '#D0D5DD',
           }}
           onClick={handleBack}
         >
-          {selectedIndex === 0 ? "Cancel" : "Back"}
+          {selectedIndex === 0 ? 'Cancel' : 'Back'}
         </Button>
         <Button
           hoverBgColor="#985EFF"
           style={{
-            borderRadius: "6px",
-            boxShadow: "none",
-            height: "36px",
-            backgroundColor: "#985EFF",
-            padding: "8px 12px",
-            display: "flex",
-            flexDirection: "row",
-            gap: "4px",
+            borderRadius: '6px',
+            boxShadow: 'none',
+            height: '36px',
+            backgroundColor: '#985EFF',
+            padding: '8px 12px',
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '4px',
           }}
           onClick={handleNext}
         >
           <RoundPlusIcon />
-          {selectedIndex === 2 ? "Submit" : "Next"}
+          {selectedIndex === 2 ? 'Submit' : 'Next'}
         </Button>
       </div>
     </div>

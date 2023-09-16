@@ -92,7 +92,6 @@ const AiTools = () => {
               <ToolItem
                 item={tool}
                 rank={index}
-                onClick={() => setSelectedDomainFilter(tool.name)}
               />
             </div>
           ))}
