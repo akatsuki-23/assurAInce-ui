@@ -192,7 +192,7 @@ const AddTools = ({ selectedList = [], setSelectedList, estimate, selectedGroup,
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                  {`$ ${removedList?.estimatedCostWithAI?.toFixed(1)}`}
+                  {`$ ${fullList?.estimatedCostWithAI?.toFixed(1)}`}
                   </div>
                 </div>
               </div>
