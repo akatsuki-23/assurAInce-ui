@@ -15,7 +15,7 @@ const ProjectDetails = ({
 
   return (
     <div>
-      <div className="bg-white w-full h-full rounded-[10px] border border-[#E4E7EC] overflow-hidden">
+      <div className="bg-white w-full h-[650px] overflow-y-scroll rounded-[10px] border border-[#E4E7EC] overflow-hidden">
         <div className="p-6 text-[18px] font-semibold text-[#101928]">
           Project Details
         </div>

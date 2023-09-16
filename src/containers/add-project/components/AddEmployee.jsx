@@ -47,7 +47,7 @@ const AddEmployee = ({ selected = [], setSelected }) => {
   }, [employeeList]);
 
   return (
-    <div className="bg-white w-full h-full rounded-[10px] border border-[#E4E7EC]">
+    <div className="bg-white w-full h-[650px] overflow-y-scroll rounded-[10px] border border-[#E4E7EC]">
       <div className="p-6 text-[18px] font-semibold text-[#101928]">
         Add Employees
       </div>
