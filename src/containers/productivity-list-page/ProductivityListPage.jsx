@@ -59,13 +59,18 @@ const ProductivityListPage = () => {
           ? new Date(data?.startDate).toDateString()
           : "-",
         category: data?.category,
-        amountSaved: `${new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(data?.amountSaved)}` ?? "$0",
+        amountSaved:
+          `${new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(data?.amountSaved)}` ?? "$0",
         aiToolsCount: data?.aiTools?.length ?? "-",
         workersCount: data?.employees?.length ?? "-",
-        name: formatNameWithImage(data?.name, "", data.iconUrl + i),
+        name: formatNameWithImage(
+          data?.name,
+          "",
+          `${data.iconUrl.slice(0, -3)}${200 + i}`
+        ),
       };
     });
     return resp;
@@ -87,7 +92,12 @@ const ProductivityListPage = () => {
             <p className="ml-2">Fitler</p>
           </div>
         </div>
-        <div className="whitespace-nowrap p-2 border border-gray-300 rounded-lg bg-purple3 text-white cursor-pointer" onClick={()=>{navigate('/add-project')}}>
+        <div
+          className="whitespace-nowrap p-2 border border-gray-300 rounded-lg bg-purple3 text-white cursor-pointer"
+          onClick={() => {
+            navigate("/add-project");
+          }}
+        >
           Add Project
         </div>
       </div>

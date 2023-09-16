@@ -89,10 +89,7 @@ const AiTools = () => {
         <div className="flex w-full flex-wrap">
           {filteredToolList.map((tool, index) => (
             <div key={tool.id} className="mr-6">
-              <ToolItem
-                item={tool}
-                rank={index}
-              />
+              <ToolItem item={tool} rank={index + 1} />
             </div>
           ))}
         </div>
