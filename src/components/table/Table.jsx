@@ -19,7 +19,6 @@ const Table = (props) => {
   const handleSelectAllClick = (event) => {
     if (event.target.checked && selected.length !== tableData?.length) {
       const newSelected = tableData.map((n) => n.id);
-      console.log(newSelected);
       setNumSelected(newSelected.length);
       setSelected(newSelected);
       return;
@@ -74,7 +73,7 @@ const Table = (props) => {
               const isItemSelected = isSelected(rowItem.id);
               return (
                 // eslint-disable-next-line react/jsx-key
-                <tr className="border border-gray-100">
+                <tr className={`border border-gray-100  ${handleRowClick? 'hover:bg-gray-100 duration-200': ''}`}>
                   {showCheckBox && (
                     <td className="px-6 py-3 w-[50px]">
                       <Checkbox

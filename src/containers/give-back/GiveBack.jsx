@@ -182,7 +182,7 @@ const GiveBack = () => {
         </div>
       </CustomModal>
       <div className="w-full h-full">
-        <div className="px-[40px] py-[24px]">
+        <div className="px-[40px] py-[22px]">
           <div className="mb-6">
             <div className="text-[24px] font-bold">Give back </div>
             <div className="text-gray-600 text-[16px]">

@@ -50,23 +50,29 @@ const ProductivityListPage = () => {
   };
 
   const formatTableData = useCallback(() => {
-    const resp = projectsList?.map((data) => {
+    const resp = projectsList?.map((data, i) => {
+      console.log(data);
       return {
         id: data?.id,
-        endDate: data?.endDate ?? "-",
-        startDate: data?.startDate ?? "-",
-        category: getChipData(data?.category),
-        amountSaved: data?.amountSaved ?? "$0",
+        endDate: data?.endDate ? new Date(data?.endDate).toDateString() : "-",
+        startDate: data?.startDate
+          ? new Date(data?.startDate).toDateString()
+          : "-",
+        category: data?.category,
+        amountSaved: `${new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        }).format(data?.amountSaved)}` ?? "$0",
         aiToolsCount: data?.aiTools?.length ?? "-",
         workersCount: data?.employees?.length ?? "-",
-        name: formatNameWithImage(data?.name, "", null),
+        name: formatNameWithImage(data?.name, "", data.iconUrl + i),
       };
     });
     return resp;
   }, [projectsList]);
 
   return (
-    <div className="px-12 pt-6 pb-12 flex flex-col items-start">
+    <div className="px-[40px] pt-[22px] pb-12 flex flex-col items-start">
       <h1 className="text-2xl font-bold ">Productivity</h1>
       <p className="text-gray-600 mb-4">Showing Data over the last 30 days</p>
       <div className="flex justify-between px-4 py-3 rounded-t-lg border border-gary-300 w-full bg-white">

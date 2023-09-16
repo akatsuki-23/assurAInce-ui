@@ -4,6 +4,7 @@ import {
   AiToolsIcon,
   DashboardIcon,
   EmployeeDetailsIcon,
+  DonateIcon,
 } from "../icons";
 
 export const navItems = [
@@ -15,7 +16,7 @@ export const navItems = [
   },
   {
     id: "employee-details",
-    name: "Employee Details",
+    name: "Employee List",
     icon: EmployeeDetailsIcon,
     path: routesPath.EMPLOYEES,
   },
@@ -31,5 +32,5 @@ export const navItems = [
     icon: ReferIcon,
     path: routesPath.PRODUCTIVITY,
   },
-  { id: "give-back", name: "Give back", icon: ReferIcon, path: "/give-back" },
+  { id: "give-back", name: "Give back", icon: DonateIcon, path: "/give-back" },
 ];
