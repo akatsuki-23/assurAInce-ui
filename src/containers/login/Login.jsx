@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 
-import Input from '../../components/input/Input';
-import Button from '../../components/button/Button';
-import { login } from './api';
-import { userDetails } from '../../store/atoms';
-import { LogoIcon } from '../../components/icons';
-import GoogleButton from './components/google-button/GoogleButton';
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
+import { login } from "./api";
+import { userDetails } from "../../store/atoms";
+import { LogoIcon } from "../../components/icons";
+import GoogleButton from "./components/google-button/GoogleButton";
 
 const LoginPage = ({ type }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [rePassword, setRePassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
 
   const [showOTP, setShowOTP] = useState(false);
 
-  const [OTP, setOTP] = useState('');
+  const [OTP, setOTP] = useState("");
   const [timeLeft, setTimeLeft] = useState(150);
 
   const navigate = useNavigate();
@@ -26,24 +26,24 @@ const LoginPage = ({ type }) => {
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    const formattedMinutes = String(minutes).padStart(2, '0');
-    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(remainingSeconds).padStart(2, "0");
     return `${formattedMinutes}:${formattedSeconds}`;
   }
 
   useEffect(() => {
     if (user.email) {
-      navigate('/home');
+      navigate("/home");
     }
   }, [user]);
   1;
 
   const onLogIn = useCallback(async () => {
-    if (type === 'login') {
+    if (type === "login") {
       const resp = await login(email, password);
 
       if (resp) {
-        localStorage.setItem('token', resp?.token);
+        localStorage.setItem("token", resp?.token);
 
         setUser(resp.user || {});
       }
@@ -56,7 +56,7 @@ const LoginPage = ({ type }) => {
     const resp = await login(email, password);
 
     if (resp) {
-      localStorage.setItem('token', resp?.token);
+      localStorage.setItem("token", resp?.token);
 
       setUser(resp.user || {});
     }
@@ -102,7 +102,7 @@ const LoginPage = ({ type }) => {
 
         <div className="flex flex-col gap-[32px] justify-between">
           <div className="text-[60px] font-semibold leading-[66px] text-white">
-            Innovation for enhanced productivity
+            Assuring responsible AI advancement
           </div>
           <div className="text-[18px] text-[#E4DBDB] opacity-[0.7]">
             Our comprehensive design system offers you an unparalleled range of
@@ -151,9 +151,9 @@ const LoginPage = ({ type }) => {
           ) : (
             <>
               <div className="text-[36px] font-semibold leading-[43px] mb-[8px]">
-                {type === 'login' ? 'Welcome back!' : 'Get started!'}
+                {type === "login" ? "Welcome back!" : "Get started!"}
               </div>
-              {type === 'login' ? (
+              {type === "login" ? (
                 <div className="flex gap-[4px] mb-[32px] items-center">
                   <div className="text-[#645D5D] text-[14px] leading-[20px]">
                     Don’t have an account?
@@ -161,7 +161,7 @@ const LoginPage = ({ type }) => {
                   <div
                     className="text-purple3 leading-[20px] text-[14px] font-semibold cursor-pointer"
                     onClick={() => {
-                      navigate('/signup');
+                      navigate("/signup");
                     }}
                   >
                     Sign Up
@@ -173,10 +173,10 @@ const LoginPage = ({ type }) => {
                   <span
                     className="text-purple3 leading-[20px] text-[14px] font-semibold cursor-pointer"
                     onClick={() => {
-                      navigate('/login');
+                      navigate("/login");
                     }}
                   >
-                    {' login '}
+                    {" login "}
                   </span>
                   with your email address
                 </div>
@@ -191,26 +191,26 @@ const LoginPage = ({ type }) => {
                   onChange={(e) => {
                     setEmail(e?.target?.value);
                   }}
-                  width={'100%'}
-                  height={'56px'}
+                  width={"100%"}
+                  height={"56px"}
                 />
               </div>
               <div className="flex flex-col gap-[4px] mb-[32px]">
                 <div className="leading-[20px] text-[14px] font-medium">
-                  {`${type === 'signup' ? 'Enter ' : ''}Password`}
+                  {`${type === "signup" ? "Enter " : ""}Password`}
                 </div>
                 {/* TODO: Password hide text */}
                 <Input
                   value={password}
-                  type='password'
+                  type="password"
                   onChange={(e) => {
                     setPassword(e?.target?.value);
                   }}
-                  width={'100%'}
-                  height={'56px'}
+                  width={"100%"}
+                  height={"56px"}
                 />
               </div>
-              {type === 'signup' && (
+              {type === "signup" && (
                 <div className="flex flex-col gap-[4px] mb-[32px]">
                   <div className="leading-[20px] text-[14px] font-medium">
                     Re Enter Password
@@ -221,8 +221,8 @@ const LoginPage = ({ type }) => {
                     onChange={(e) => {
                       setRePassword(e?.target?.value);
                     }}
-                    width={'100%'}
-                    height={'56px'}
+                    width={"100%"}
+                    height={"56px"}
                   />
                 </div>
               )}
@@ -230,14 +230,14 @@ const LoginPage = ({ type }) => {
                 bgColor="#985EFF"
                 onClick={onLogIn}
                 style={{
-                  padding: '16px 24px',
+                  padding: "16px 24px",
                 }}
               >
                 <div className="text-[16px] font-semibold">
-                  {type === 'login' ? 'Login' : 'Sign Up'}
+                  {type === "login" ? "Login" : "Sign Up"}
                 </div>
               </Button>
-              {type === 'login' && (
+              {type === "login" && (
                 <div className="flex gap-[4px] mt-[26px] items-center justify-center">
                   <div className="text-[#645D5D] text-[14px] leading-[20px]">
                     Forgot Password?

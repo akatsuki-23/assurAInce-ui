@@ -27,6 +27,11 @@ const EMPLOYEE_CATEGORY_LIST = {
     bgColor: "#E7F6EC",
     textColor: "#036B26",
   },
+  default: {
+    title: "Engineering",
+    bgColor: "#E3EFFC",
+    textColor: "#04326B",
+  },
 };
 
 const PROJECT_CATEGORY_LIST = {

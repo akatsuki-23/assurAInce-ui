@@ -18,7 +18,19 @@ const headers = [
 
 const getChipData = (tag) => {
   if (tag)
-    return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: ${EMPLOYEE_CATEGORY_LIST[tag]?.bgColor}; color: ${EMPLOYEE_CATEGORY_LIST[tag]?.textColor} ">${EMPLOYEE_CATEGORY_LIST[tag]?.title}</div>`;
+    return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: ${
+      EMPLOYEE_CATEGORY_LIST[tag]?.bgColor === undefined
+        ? EMPLOYEE_CATEGORY_LIST["default"]?.bgColor
+        : EMPLOYEE_CATEGORY_LIST[tag]?.bgColor
+    }; color: ${
+      EMPLOYEE_CATEGORY_LIST[tag]?.textColor === undefined
+        ? EMPLOYEE_CATEGORY_LIST["default"]?.textColor
+        : EMPLOYEE_CATEGORY_LIST[tag]?.textColor
+    } ">${
+      EMPLOYEE_CATEGORY_LIST[tag]?.title === undefined
+        ? EMPLOYEE_CATEGORY_LIST["default"]?.title
+        : EMPLOYEE_CATEGORY_LIST[tag]?.title
+    }</div>`;
   return `<div style="padding:2px 12px; border-radius: 20px; background-color: #FFECE5; ">-</div>`;
 };
 
@@ -39,16 +51,14 @@ const EmployeeListPage = () => {
 
   const formatTableData = useCallback(() => {
     const resp = employeeList?.map((data) => {
+      console.log("Category Data: ", data?.category);
+
       return {
-        name: formatNameWithImage(
-          data?.firstName,
-          data?.lastName ?? "",
-          null
-        ),
+        name: formatNameWithImage(data?.firstName, data?.lastName ?? "", null),
         id: data?.id,
         score: data?.score ?? "-",
         email: data?.email ?? "-",
-        category: getChipData(data?.category),
+        category: getChipData(data?.category ?? "Product Management"),
         reportTo: data?.reportTo ?? "-",
       };
     });
