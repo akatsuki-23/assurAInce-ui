@@ -1,14 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { getAiTools } from '../../ai-tools/api';
 import Button from '../../../components/button/Button';
 import ToolItem from '../../ai-tools/ToolItem';
 
-const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
+const AddTools = ({ selectedList = [], setSelectedList, estimate, selectedGroup, setSelectedGroup }) => {
   const [selectedDomainFilter, setSelectedDomainFilter] = useState(
     'Autonomous Vehicles'
   );
   const [toolList, setToolList] = useState([]);
   const [filteredToolList, setFilteredToolList] = useState([]);
+
 
   const { removedList, fullList } = useMemo(() => {
     if (estimate) {
@@ -25,7 +26,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
   const withoutAI = removedList?.employees;
 
   function hoursToDays(hours) {
-    return (hours / 24).toFixed(1);
+    return (hours / 24)?.toFixed(1);
   }
 
   useEffect(() => {
@@ -74,16 +75,15 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
     );
   };
 
-  const ToolCard = ({ isDisabled, data }) => {
+  const ToolCard = ({ isSelected, data, onSelectTool }) => {
     return (
       <div
         className={`px-[24px] py-[16px] w-[203px] h-[72px] bg-white rounded-[3px] ${
-          isDisabled && 'border border-[#D42620]'
+          isSelected && 'border border-green-500'
         }`}
       >
         <div className="flex gap-[12px]">
-          {/* <img src={data?.profileUrl} className="w-[40px] h-[40px] rounded-full" /> */}
-          <div className="w-[48px] h-[48px] rounded-[8px] bg-gray-200"></div>
+          <img src={data?.iconUrl} className="w-[48px] h-[408x] rounded-[8px]" />
           <div className="flex flex-col">
             <div className="font-medium text-[14px]">Adobe</div>
             {/* <div className="font-normal text-[14px] text-[#475367]">Design</div> */}
@@ -99,7 +99,9 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
         Add Tools
       </div>
       <div className="px-[35px] flex flex-col gap-[26px] pb-[50px]">
-        <div className="bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px]">
+        <div className={`bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px] cursor-pointer ${selectedGroup === 0 && 'border border-green-500'}`} onClick={() => {
+          setSelectedGroup(0)
+        }}>
           <div className="flex justify-between w-full items-center mb-[26px]">
             <div className="flex flex-col">
               <div className="text-[#101928] font-medium text-[16px]">
@@ -117,7 +119,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                    {`${hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)} days`}
+                    {`${hoursToDays(removedList?.timeForWorkInHrWithAI || 1440)} days`}
                   </div>
                 </div>
               </div>
@@ -128,7 +130,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                    $ 10
+                    {`$ ${removedList?.estimatedCostWithAI?.toFixed(1)}`}
                   </div>
                 </div>
               </div>
@@ -152,13 +154,15 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
           </div>
 
           <div className="flex w-full gap-[26px]">
-            {[1, 1, 1].map((item, index) => {
-              return <ToolCard key={index} />;
+            {filteredToolList.map((item) => {
+              return <ToolCard key={item.id} data={item}isSelected={selectedList.find((subItem) => item.id === subItem.id)}/>;
             })}
           </div>
         </div>
 
-        <div className="bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px]">
+        <div className={`bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px] cursor-pointer ${selectedGroup === 1 && 'border border-green-500'}`} onClick={() => {
+          setSelectedGroup(1)
+        }}>
           <div className="flex justify-between w-full items-center mb-[26px]">
             <div className="flex flex-col">
               <div className="text-[#101928] font-medium text-[16px]">
@@ -176,7 +180,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                    {/* {hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)} */}
+                    {hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)}
                     25 Days
                   </div>
                 </div>
@@ -188,7 +192,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                    $ 10
+                  {`$ ${removedList?.estimatedCostWithAI?.toFixed(1)}`}
                   </div>
                 </div>
               </div>
@@ -201,24 +205,21 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 <EmpCard
                   key={item?.id}
                   data={item}
-                  isDisabled={
-                    !removedList?.employees?.find(
-                      (subItem) => subItem.id === item.id
-                    )
-                  }
                 />
               );
             })}
           </div>
 
           <div className="flex w-full gap-[26px]">
-            {[1, 1, 1].map((item, index) => {
-              return <ToolCard key={index} />;
+            {filteredToolList.map((item) => {
+              return <ToolCard key={item.id} data={item} isSelected={selectedList.find((subItem) => item.id === subItem.id)}/>;
             })}
           </div>
         </div>
 
-        <div className="bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px]">
+        <div className={`bg-[#F9FAFB] rounded-[13px]  px-[42px] py-[30px] cursor-pointer ${selectedGroup === 2 && 'border border-green-500'}`} onClick={() => {
+          setSelectedGroup(2)
+        }}>
           <div className="flex justify-between w-full items-center mb-[26px]">
             <div className="flex flex-col">
               <div className="text-[#101928] font-medium text-[16px]">
@@ -233,7 +234,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                    {/* {hoursToDays(fullList?.timeForWorkInHrWithAI || 1440)} */}
+                    {hoursToDays(fullList?.timeForWorkInHrWithOutAI || 1440)}
                     30 days
                   </div>
                 </div>
@@ -245,7 +246,7 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 </div>
                 <div className="rounded-[6px] w-[97px] h-[47px] border border-[#D0D5DD] flex items-center justify-center">
                   <div className="text-[#344054] font-semibold text-[14px]">
-                    $ 1000
+                  {`$ ${removedList?.estimatedCostWithOutAI?.toFixed(1)}`}
                   </div>
                 </div>
               </div>
@@ -258,11 +259,6 @@ const AddTools = ({ selectedList, setSelectedList = [], estimate }) => {
                 <EmpCard
                   key={item?.id}
                   data={item}
-                  isDisabled={
-                    !removedList?.employees?.find(
-                      (subItem) => subItem.id === item.id
-                    )
-                  }
                 />
               );
             })}

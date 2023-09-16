@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import Stepper from './components/Stepper';
 import AddEmployee from './components/AddEmployee';
 import Button from '../../components/button/Button';
@@ -20,25 +20,45 @@ const AddProjectPage = () => {
   const [tools, setTools] = useState([]);
 
   const [estimate, setEstimate] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState(0);
   const navigate = useNavigate();
+
+  const [stupid, setStupid] = useState([]);
+
+  const { removedList, fullList } = useMemo(() => {
+    if (estimate) {
+      if (estimate?.[0]?.employeeCount < estimate?.[1]?.employeeCount) {
+        return { removedList: estimate[0], fullList: estimate[1] };
+      } else {
+        return { removedList: estimate[1], fullList: estimate[0] };
+      }
+    }
+
+    return { removedList: [], fullList: [] };
+  }, [estimate]);
 
   const handleNext = useCallback(async () => {
     if (selectedIndex < 2) setSelectedIndex(selectedIndex + 1);
     else {
       const toolID = tools.map((item) => item.id);
 
-      await createProject(name, toolID, employees, description);
+      let EEEEE = employees;
+      if (selectedGroup === 0) {
+        EEEEE = removedList.employees.map((item) => item.id);
+      }
+
+      await createProject(name, toolID, EEEEE, description);
 
       navigate('/productivity');
     }
-``
+    ``;
     // TODO optimize
     if (selectedIndex === 1) {
       const resp = await fetchEstimate(employees);
 
       setEstimate(resp?.teamEfficiencies);
     }
-  }, [tools, employees, selectedIndex, name, description]);
+  }, [tools, employees, selectedIndex, name, description, estimate]);
 
   const handleBack = () => {
     if (selectedIndex > 0) setSelectedIndex(selectedIndex - 1);
@@ -78,7 +98,13 @@ const AddProjectPage = () => {
           <AddEmployee setSelected={setEmployees} selected={employees} />
         )}
         {selectedIndex === 2 && (
-          <AddTools selectedList={tools} setSelectedList={setTools} estimate={estimate} />
+          <AddTools
+            selectedGroup={selectedGroup}
+            setSelectedGroup={setSelectedGroup}
+            selectedList={tools}
+            setSelectedList={setTools}
+            estimate={estimate}
+          />
         )}
       </div>
       <div className="flex flex-row gap-3 pl-[50px] pb-[50px] pt-[30px]">
