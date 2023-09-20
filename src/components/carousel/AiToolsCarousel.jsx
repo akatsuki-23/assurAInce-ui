@@ -1,24 +1,31 @@
-import Slider from "react-slick";
+import Slider from 'react-slick';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 //  pass details
-const Card = ({ details }) => {
+const Card = ({ details, i }) => {
+  console.log(details);
+
   return (
-    <div className="mr-[17px]">
+    <div className=" w-full">
       <div
-        className="w-[370px] h-[240px] rounded-[8px] flex justify-end flex-col"
+        className="overflow-hidden relative w-[370px] h-[240px] rounded-[8px] flex justify-end flex-col"
         style={{
-          backgroundImage: "url(images/adobe-firefly-card.jpg)", // image is applied as bg
+          backgroundImage: `url(${details.iconUrl.slice(0, -3)}${200 + i})`, // image is applied as bg
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
         }}
       >
-        <div className="px-[18px] py-[25px] flex flex-col">
+        <div className="absolute w-full h-full bg-gradient-to-t from-black"></div>
+        <div className="px-[18px] py-[25px] flex flex-col z-10">
           {/* name */}
-          <div className="text-white text-[17px] font-medium">Adobe Fly</div>
+          <div className="text-white text-[17px] font-medium">
+            {details?.name}
+          </div>
           {/* description or something idk */}
           <div className="text-white text-[14px] font-normal">
-            AI Tool for image Editing
+            {details?.domain}
           </div>
         </div>
       </div>
@@ -53,9 +60,9 @@ const AiToolsCarousel = ({ data }) => {
     <div>
       <Slider {...settings}>
         {/* map details */}
-        {[1, 1, 1, 1, 1, 1].map((item, index) => (
+        {data.map((item, index) => (
           // pass item
-          <Card key={index} />
+          <Card key={index} details={item} i={index} />
         ))}
       </Slider>
     </div>

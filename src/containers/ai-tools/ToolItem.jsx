@@ -1,4 +1,4 @@
-import { AdobeFireFlyIcon, SuccessIcon } from '../../components/icons';
+import { SuccessIcon } from '../../components/icons';
 
 const ToolItem = ({ item, rank, onClick, isSelected = false }) => {
   const eachToolItemData = item;
@@ -12,12 +12,12 @@ const ToolItem = ({ item, rank, onClick, isSelected = false }) => {
       }}
     >
       <p className="absolute top-[4px] left-[4px] text-gray-400">{rank}</p>
-      <div className="flex pl-5 py-[10px] pr-6">
+      <div className="flex pl-5 py-[10px] pr-6 items-center">
         <div className="relative w-12 h-12">
           <div className="absolute -right-[5px] -top-[5px]">
             {rank % 2 == 0 && <SuccessIcon />}
           </div>
-          <AdobeFireFlyIcon />
+          <img src={item.iconUrl} className='rounded-[8px]' />
         </div>
         <div className="flex flex-col ml-3">
           <p className="text-base font-bold w-[150px] truncate">

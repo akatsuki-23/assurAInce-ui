@@ -41,7 +41,7 @@ const ProductivityListPage = () => {
 
   const getChipData = (tag) => {
     if (tag)
-      return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: ${PROJECT_CATEGORY_LIST[tag]?.bgColor}; color: ${PROJECT_CATEGORY_LIST[tag]?.textColor} ">${PROJECT_CATEGORY_LIST[tag]?.title}</div>`;
+      return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: ${PROJECT_CATEGORY_LIST.FINTECH?.bgColor}; color: ${PROJECT_CATEGORY_LIST.FINTECH?.textColor} ">${PROJECT_CATEGORY_LIST.FINTECH.title}</div>`;
     return `<div style="padding:2px 12px; border-radius: 20px; white-space: noWrap; background-color: #FFECE5; ">-</div>`;
   };
 
@@ -58,7 +58,7 @@ const ProductivityListPage = () => {
         startDate: data?.startDate
           ? new Date(data?.startDate).toDateString()
           : "-",
-        category: data?.category,
+        category: getChipData(data?.category),
         amountSaved:
           `${new Intl.NumberFormat("en-US", {
             style: "currency",

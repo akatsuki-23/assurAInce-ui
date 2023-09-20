@@ -47,7 +47,7 @@ const AiTools = () => {
           Showing data over the last 30 days
         </div>
         <div className="py-[24px] flex flex-col space-y-6">
-          <AiToolsCarousel data={{}} />
+          <AiToolsCarousel data={toolList} />
         </div>
       </div>
       <div>
